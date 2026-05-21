@@ -6,15 +6,15 @@
 
 ## Stack
 
-- **HTML + Tailwind CSS**
+- **HTML + Tailwind CSS** (CDN, zero build step)
 - **Hospedagem:** Vercel
-- **Analytics:** Google Analytics 4 + Meta Pixel
+- **Analytics:** Google Analytics 4 + Meta Pixel *(Sprint 5)*
 - **Integração:** WhatsApp Business
 
 ## Fontes
 
-- Títulos: [Geist](https://vercel.com/font)
-- Corpo: [Inter](https://fonts.google.com/specimen/Inter)
+- Títulos: Inter (letter-spacing -0.02em, substituta do Geist)
+- Corpo: Inter — [Google Fonts](https://fonts.google.com/specimen/Inter)
 
 ## Paleta
 
@@ -35,16 +35,14 @@
 f5-solution-landing/
 ├── docs/
 │   ├── sprint-1-analise.md         ✅ Crítica estratégica do briefing
-│   ├── sprint-2-prompt-mestre.md   ✅ Prompt Mestre completo
-│   └── sprint-3-arquitetura.md     🔜 Pendente
+│   └── sprint-2-prompt-mestre.md   ✅ Prompt Mestre completo
 ├── src/
-│   ├── index.html                  🔜 Sprint 3
-│   ├── css/
-│   └── js/
+│   └── index.html                  ✅ Sprint 3 — primeira versão funcional
 ├── assets/
 ├── reports/
-│   ├── sprint-1-report.md          ✅ Relatório interno Sprint 1
-│   └── sprint-2-report.md          ✅ Relatório interno Sprint 2
+│   ├── sprint-1-report.md          ✅
+│   ├── sprint-2-report.md          ✅
+│   └── sprint-3-report.md          ✅
 └── README.md
 ```
 
@@ -56,17 +54,30 @@ f5-solution-landing/
 |---|---|---|
 | Sprint 1 | ✅ Concluída | Crítica estratégica do briefing |
 | Sprint 2 | ✅ Concluída | Prompt Mestre |
-| Sprint 3 | 🔜 Pendente | HTML + Tailwind CSS |
-| Sprint 4 | 🔜 Pendente | Responsividade e ajustes |
-| Sprint 5 | 🔜 Pendente | Integrações e deploy |
+| Sprint 3 | ✅ Concluída | HTML + Tailwind — primeira versão funcional |
+| Sprint 4 | 🔜 Pendente | Revisão, refinamento e substituição de placeholders |
+| Sprint 5 | 🔜 Pendente | GA4, Meta Pixel e deploy em Vercel |
 
 ---
 
 ## Como rodar localmente
 
 ```bash
+git clone https://github.com/gsfsilva/f5-solution-landing.git
+cd f5-solution-landing
 open src/index.html
 ```
+
+Ou com VS Code + extensão **Live Server** → botão "Go Live".
+
+---
+
+## Placeholders a substituir antes do deploy
+
+- [ ] Número WhatsApp: `5500000000000` → número real
+- [ ] E-mail: `contato@f5solution.com.br` → e-mail real
+- [ ] Logo textual → SVG real da marca
+- [ ] Dados do dashboard (simulados) → dados reais
 
 ---
 
