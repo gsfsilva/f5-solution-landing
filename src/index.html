@@ -3,10 +3,930 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>F5 Solution — Suporte Técnico Terceirizado</title>
-  <!-- Sprint 4: HTML + Tailwind será construído aqui -->
+  <title>F5 Solution — Suporte Técnico Terceirizado para Revendas</title>
+  <meta name="description" content="A F5 Solution oferece terceirização de suporte técnico para revendas de automação comercial e empresas de ERP. SLA definido, equipe especializada, 30 dias sem custo." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D1117',
+            background: '#F8F9FA',
+            accent: '#00C853',
+            neutral: '#2B2B2B',
+            border: '#E5E7EB',
+            muted: '#6B7280',
+          },
+          fontFamily: {
+            geist: ['Inter', 'system-ui', 'sans-serif'],
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #F8F9FA; color: #2B2B2B; }
+
+    .font-geist { font-family: 'Inter', system-ui, sans-serif; letter-spacing: -0.02em; }
+
+    /* Fade in on scroll */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Staggered children */
+    .stagger > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.12s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.19s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.26s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.33s; }
+
+    /* Nav */
+    nav { backdrop-filter: blur(12px); background: rgba(255,255,255,0.92); }
+
+    /* Cards hover */
+    .card-hover { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+    .card-hover:hover { box-shadow: 0 8px 24px rgba(13,17,23,0.1); transform: translateY(-2px); }
+
+    /* Btn transitions */
+    .btn-primary { transition: filter 0.15s ease, transform 0.15s ease; }
+    .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-secondary { transition: color 0.15s ease, border-color 0.15s ease; }
+    .btn-secondary:hover { color: #0D1117; border-color: #0D1117; }
+
+    /* Dashboard panel */
+    .ticket { animation: ticketPulse 3s ease-in-out infinite; }
+    .ticket:nth-child(2) { animation-delay: 1s; }
+    .ticket:nth-child(3) { animation-delay: 2s; }
+    @keyframes ticketPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.75; }
+    }
+
+    /* FAQ accordion */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+    .faq-answer.open { max-height: 300px; }
+    .faq-icon { transition: transform 0.3s ease; }
+    .faq-icon.open { transform: rotate(45deg); }
+
+    /* Mobile menu */
+    #mobile-menu { transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+    /* Timeline connector */
+    .step-line { flex: 1; height: 1px; background: #E5E7EB; }
+
+    /* Floating WA button */
+    .wa-float { box-shadow: 0 4px 20px rgba(0,200,83,0.35); }
+    .wa-float:hover { box-shadow: 0 6px 28px rgba(0,200,83,0.5); transform: translateY(-2px); }
+    .wa-float { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+
+    /* Metric bar animation */
+    .metric-bar { width: 0; transition: width 1.2s ease; }
+    .metric-bar.animated { width: var(--target-width); }
+
+    /* Noise overlay for dark sections */
+    .noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      border-radius: inherit;
+    }
+  </style>
 </head>
-<body>
-  <p>Em construção — Sprint 4</p>
+<body class="antialiased">
+
+<!-- ===================== NAV ===================== -->
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-gray-100" style="background:rgba(255,255,255,0.93);backdrop-filter:blur(12px);">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="#" class="font-geist font-bold text-xl tracking-tight" style="color:#0D1117;">
+        F5 <span style="color:#00C853;">Solution</span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#servicos" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Serviços</a>
+        <a href="#como-funciona" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Como funciona</a>
+        <a href="#garantia" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Garantia</a>
+        <a href="#faq" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">FAQ</a>
+      </div>
+
+      <!-- CTA desktop -->
+      <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
+         target="_blank" rel="noopener"
+         class="hidden md:inline-flex items-center gap-2 btn-primary text-sm font-semibold px-4 py-2 rounded-lg text-white"
+         style="background:#0D1117;">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Quero falar com a F5
+      </a>
+
+      <!-- Hamburger -->
+      <button id="menu-btn" aria-label="Abrir menu" class="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900">
+        <svg id="icon-open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden border-t border-gray-100 bg-white">
+    <div class="px-5 py-4 flex flex-col gap-4">
+      <a href="#servicos" class="text-sm font-medium text-gray-600" onclick="closeMenu()">Serviços</a>
+      <a href="#como-funciona" class="text-sm font-medium text-gray-600" onclick="closeMenu()">Como funciona</a>
+      <a href="#garantia" class="text-sm font-medium text-gray-600" onclick="closeMenu()">Garantia</a>
+      <a href="#faq" class="text-sm font-medium text-gray-600" onclick="closeMenu()">FAQ</a>
+      <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
+         target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-4 py-3 rounded-lg text-white"
+         style="background:#00C853;color:#0D1117;">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Quero falar com a F5
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero" class="pt-32 pb-20 lg:pt-40 lg:pb-28" style="background:#F8F9FA;">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <!-- Copy -->
+      <div class="fade-in">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase mb-6 px-3 py-1.5 rounded-full border" style="border-color:#E5E7EB;color:#6B7280;">
+          <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:#00C853;"></span>
+          Terceirização de Suporte Técnico
+        </div>
+
+        <h1 class="font-geist font-bold text-4xl lg:text-5xl xl:text-6xl leading-tight mb-5" style="color:#0D1117;">
+          Terceirize seu suporte técnico<br/>
+          <span style="color:#00C853;">sem perder qualidade.</span>
+        </h1>
+
+        <p class="text-lg text-gray-500 mb-8 leading-relaxed max-w-lg">
+          A F5 Solution cuida da operação técnica da sua revenda enquanto você foca no crescimento do negócio.
+        </p>
+
+        <ul class="space-y-3 mb-10">
+          <li class="flex items-start gap-3 text-sm" style="color:#2B2B2B;">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#00C853;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Atendimento remoto ágil com Digisac, WhatsApp e AnyDesk.
+          </li>
+          <li class="flex items-start gap-3 text-sm" style="color:#2B2B2B;">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#00C853;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Redução de custo operacional sem precisar montar equipe CLT.
+          </li>
+          <li class="flex items-start gap-3 text-sm" style="color:#2B2B2B;">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#00C853;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            SLA, indicadores e suporte especializado em automação comercial.
+          </li>
+        </ul>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
+             target="_blank" rel="noopener"
+             class="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm"
+             style="background:#00C853;color:#0D1117;">
+            Quero falar com a F5
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#servicos"
+             class="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm border"
+             style="border-color:#E5E7EB;color:#6B7280;">
+            Ver serviços
+          </a>
+        </div>
+      </div>
+
+      <!-- Dashboard panel -->
+      <div class="fade-in hidden lg:block" style="transition-delay:0.15s;">
+        <div class="rounded-2xl border p-5 shadow-sm" style="background:#FFFFFF;border-color:#E5E7EB;">
+          <!-- Panel header -->
+          <div class="flex items-center justify-between mb-5 pb-4 border-b" style="border-color:#E5E7EB;">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest" style="color:#6B7280;">Painel de Operação</p>
+              <p class="text-sm font-semibold mt-0.5" style="color:#0D1117;">F5 Solution — Dashboard</p>
+            </div>
+            <span class="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full" style="background:#DCFCE7;color:#15803D;">
+              <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:#00C853;"></span>
+              Operação ativa
+            </span>
+          </div>
+
+          <!-- Métricas -->
+          <div class="grid grid-cols-3 gap-3 mb-5">
+            <div class="rounded-xl p-3" style="background:#F8F9FA;">
+              <p class="text-xs" style="color:#6B7280;">Chamados hoje</p>
+              <p class="text-2xl font-bold mt-1 font-geist" style="color:#0D1117;">24</p>
+              <p class="text-xs mt-0.5" style="color:#00C853;">↑ 3 resolvidos</p>
+            </div>
+            <div class="rounded-xl p-3" style="background:#F8F9FA;">
+              <p class="text-xs" style="color:#6B7280;">SLA médio</p>
+              <p class="text-2xl font-bold mt-1 font-geist" style="color:#0D1117;">1h40</p>
+              <p class="text-xs mt-0.5" style="color:#00C853;">Dentro do prazo</p>
+            </div>
+            <div class="rounded-xl p-3" style="background:#F8F9FA;">
+              <p class="text-xs" style="color:#6B7280;">Satisfação</p>
+              <p class="text-2xl font-bold mt-1 font-geist" style="color:#0D1117;">98%</p>
+              <p class="text-xs mt-0.5" style="color:#00C853;">Último mês</p>
+            </div>
+          </div>
+
+          <!-- Tickets -->
+          <div class="space-y-2.5">
+            <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color:#6B7280;">Chamados recentes</p>
+
+            <div class="ticket flex items-center gap-3 p-3 rounded-xl border" style="border-color:#E5E7EB;background:#FFFFFF;">
+              <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:#00C853;"></div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-medium truncate" style="color:#0D1117;">Erro na emissão de NF-e — ERP Saurus</p>
+                <p class="text-xs mt-0.5" style="color:#6B7280;">Atendimento remoto · AnyDesk</p>
+              </div>
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0" style="background:#DCFCE7;color:#15803D;">Resolvido</span>
+            </div>
+
+            <div class="ticket flex items-center gap-3 p-3 rounded-xl border" style="border-color:#E5E7EB;background:#FFFFFF;">
+              <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:#F59E0B;"></div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-medium truncate" style="color:#0D1117;">Lentidão no sistema — Implantação ERP</p>
+                <p class="text-xs mt-0.5" style="color:#6B7280;">Atendimento remoto · Digisac</p>
+              </div>
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0" style="background:#FEF3C7;color:#92400E;">Em andamento</span>
+            </div>
+
+            <div class="ticket flex items-center gap-3 p-3 rounded-xl border" style="border-color:#E5E7EB;background:#FFFFFF;">
+              <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:#3B82F6;"></div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-medium truncate" style="color:#0D1117;">Configuração PDV — Automação comercial</p>
+                <p class="text-xs mt-0.5" style="color:#6B7280;">Plantão emergencial · WhatsApp</p>
+              </div>
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0" style="background:#DBEAFE;color:#1E40AF;">Aberto</span>
+            </div>
+          </div>
+
+          <!-- SLA bar -->
+          <div class="mt-5 pt-4 border-t" style="border-color:#E5E7EB;">
+            <div class="flex justify-between items-center mb-2">
+              <p class="text-xs font-medium" style="color:#6B7280;">Meta de SLA mensal</p>
+              <p class="text-xs font-semibold" style="color:#0D1117;">94 / 100</p>
+            </div>
+            <div class="h-1.5 rounded-full" style="background:#E5E7EB;">
+              <div class="h-1.5 rounded-full" style="background:#00C853;width:94%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROVA RÁPIDA ===================== -->
+<section style="background:#0D1117;" class="relative overflow-hidden noise">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8 py-12">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 stagger">
+      <div class="fade-in flex flex-col items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(255,255,255,0.08);">
+          <svg width="20" height="20" fill="none" stroke="#00C853" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white">SLA e monitoramento</p>
+          <p class="text-xs mt-0.5" style="color:#6B7280;">Indicadores em tempo real</p>
+        </div>
+      </div>
+
+      <div class="fade-in flex flex-col items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(255,255,255,0.08);">
+          <svg width="20" height="20" fill="none" stroke="#00C853" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white">Especialistas em automação</p>
+          <p class="text-xs mt-0.5" style="color:#6B7280;">Equipe técnica dedicada</p>
+        </div>
+      </div>
+
+      <div class="fade-in flex flex-col items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(255,255,255,0.08);">
+          <svg width="20" height="20" fill="none" stroke="#00C853" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white">WhatsApp + Digisac + AnyDesk</p>
+          <p class="text-xs mt-0.5" style="color:#6B7280;">Nos canais que você já usa</p>
+        </div>
+      </div>
+
+      <div class="fade-in flex flex-col items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(255,255,255,0.08);">
+          <svg width="20" height="20" fill="none" stroke="#00C853" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white">30 dias de experiência</p>
+          <p class="text-xs mt-0.5" style="color:#6B7280;">Sem custo e sem compromisso</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOR E CONTEXTO ===================== -->
+<section id="dor" class="py-20 lg:py-28" style="background:#F8F9FA;">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8">
+    <div class="max-w-2xl mb-14 fade-in">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#6B7280;">O problema que você conhece bem</p>
+      <h2 class="font-geist font-bold text-3xl lg:text-4xl leading-tight mb-5" style="color:#0D1117;">
+        Quando o suporte vira gargalo,<br/>a revenda para de crescer.
+      </h2>
+      <p class="text-base leading-relaxed" style="color:#6B7280;">
+        A F5 entra para trazer previsibilidade, processo e capacidade operacional ao seu suporte — sem os custos e riscos de montar uma equipe interna.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 stagger">
+      <div class="fade-in card-hover rounded-2xl border p-6" style="background:#FFFFFF;border-color:#E5E7EB;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#FEF2F2;">
+          <svg width="20" height="20" fill="none" stroke="#EF4444" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-base mb-2" style="color:#0D1117;">Equipe sobrecarregada</h3>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Seu time técnico atende mais do que consegue absorver. Resultado: atrasos, erros e desgaste constante.</p>
+      </div>
+
+      <div class="fade-in card-hover rounded-2xl border p-6" style="background:#FFFFFF;border-color:#E5E7EB;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#FFF7ED;">
+          <svg width="20" height="20" fill="none" stroke="#F59E0B" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-base mb-2" style="color:#0D1117;">Dificuldade para contratar</h3>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Técnico qualificado em automação comercial é difícil de encontrar, caro para contratar e ainda mais caro para perder.</p>
+      </div>
+
+      <div class="fade-in card-hover rounded-2xl border p-6" style="background:#FFFFFF;border-color:#E5E7EB;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#EFF6FF;">
+          <svg width="20" height="20" fill="none" stroke="#3B82F6" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-base mb-2" style="color:#0D1117;">Clientes insatisfeitos</h3>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Demora no atendimento gera reclamação. Reclamação gera cancelamento. Cancelamento freia o crescimento da revenda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMO FUNCIONA ===================== -->
+<section id="como-funciona" class="py-20 lg:py-28" style="background:#FFFFFF;">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8">
+    <div class="text-center max-w-xl mx-auto mb-16 fade-in">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#6B7280;">Processo estruturado</p>
+      <h2 class="font-geist font-bold text-3xl lg:text-4xl leading-tight" style="color:#0D1117;">Como a F5 assume<br/>seu suporte</h2>
+    </div>
+
+    <!-- Desktop timeline -->
+    <div class="hidden lg:flex items-start gap-0 stagger">
+      <div class="fade-in flex flex-col items-center flex-1">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm text-white mb-4" style="background:#0D1117;">1</div>
+        <div class="h-px w-full mb-4" style="background:#E5E7EB;margin-top:-28px;margin-left:50%;z-index:0;position:relative;"></div>
+        <div class="text-center px-3">
+          <p class="font-semibold text-sm mb-2" style="color:#0D1117;">Diagnóstico inicial</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Mapeamos sua operação, ferramentas e volume de chamados.</p>
+        </div>
+      </div>
+      <div class="fade-in flex flex-col items-center flex-1">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm text-white mb-4" style="background:#0D1117;">2</div>
+        <div class="text-center px-3">
+          <p class="font-semibold text-sm mb-2" style="color:#0D1117;">Onboarding</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Transferência de conhecimento e adaptação ao seu contexto.</p>
+        </div>
+      </div>
+      <div class="fade-in flex flex-col items-center flex-1">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm text-white mb-4" style="background:#0D1117;">3</div>
+        <div class="text-center px-3">
+          <p class="font-semibold text-sm mb-2" style="color:#0D1117;">Organização dos canais</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Configuração do Digisac, AnyDesk e WhatsApp Business.</p>
+        </div>
+      </div>
+      <div class="fade-in flex flex-col items-center flex-1">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm text-white mb-4" style="background:#0D1117;">4</div>
+        <div class="text-center px-3">
+          <p class="font-semibold text-sm mb-2" style="color:#0D1117;">Início do atendimento</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Equipe F5 opera com SLA definido e documentação ativa.</p>
+        </div>
+      </div>
+      <div class="fade-in flex flex-col items-center flex-1">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm text-white mb-4" style="background:#00C853;">5</div>
+        <div class="text-center px-3">
+          <p class="font-semibold text-sm mb-2" style="color:#0D1117;">Monitoramento contínuo</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Indicadores, relatórios e melhoria operacional constante.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile steps -->
+    <div class="lg:hidden space-y-4 stagger">
+      <div class="fade-in flex gap-4 items-start">
+        <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style="background:#0D1117;">1</div>
+        <div class="flex-1 pb-4 border-b" style="border-color:#E5E7EB;">
+          <p class="font-semibold text-sm mb-1" style="color:#0D1117;">Diagnóstico inicial</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Mapeamos sua operação, ferramentas e volume de chamados.</p>
+        </div>
+      </div>
+      <div class="fade-in flex gap-4 items-start">
+        <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style="background:#0D1117;">2</div>
+        <div class="flex-1 pb-4 border-b" style="border-color:#E5E7EB;">
+          <p class="font-semibold text-sm mb-1" style="color:#0D1117;">Onboarding e transferência de conhecimento</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Adaptação ao seu contexto e documentação da operação.</p>
+        </div>
+      </div>
+      <div class="fade-in flex gap-4 items-start">
+        <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style="background:#0D1117;">3</div>
+        <div class="flex-1 pb-4 border-b" style="border-color:#E5E7EB;">
+          <p class="font-semibold text-sm mb-1" style="color:#0D1117;">Organização dos canais e ferramentas</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Digisac, AnyDesk e WhatsApp configurados e prontos.</p>
+        </div>
+      </div>
+      <div class="fade-in flex gap-4 items-start">
+        <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style="background:#0D1117;">4</div>
+        <div class="flex-1 pb-4 border-b" style="border-color:#E5E7EB;">
+          <p class="font-semibold text-sm mb-1" style="color:#0D1117;">Início do atendimento remoto</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">SLA definido e operação rodando com documentação ativa.</p>
+        </div>
+      </div>
+      <div class="fade-in flex gap-4 items-start">
+        <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style="background:#00C853;color:#0D1117;">5</div>
+        <div class="flex-1">
+          <p class="font-semibold text-sm mb-1" style="color:#0D1117;">Monitoramento com indicadores</p>
+          <p class="text-xs leading-relaxed" style="color:#6B7280;">Relatórios e melhoria contínua para sua operação crescer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVIÇOS ===================== -->
+<section id="servicos" class="py-20 lg:py-28" style="background:#F8F9FA;">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8">
+    <div class="text-center max-w-xl mx-auto mb-14 fade-in">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#6B7280;">O que a F5 oferece</p>
+      <h2 class="font-geist font-bold text-3xl lg:text-4xl leading-tight" style="color:#0D1117;">Serviços de suporte<br/>para revendas</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
+      <div class="fade-in card-hover rounded-2xl border p-6" style="background:#FFFFFF;border-color:#E5E7EB;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#F8F9FA;">
+          <svg width="20" height="20" fill="none" stroke="#0D1117" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-base mb-2" style="color:#0D1117;">Suporte técnico remoto</h3>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Atendimento ágil via WhatsApp, Digisac e AnyDesk com SLA definido e documentação de cada chamado.</p>
+      </div>
+
+      <div class="fade-in card-hover rounded-2xl border p-6" style="background:#FFFFFF;border-color:#E5E7EB;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#F8F9FA;">
+          <svg width="20" height="20" fill="none" stroke="#0D1117" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-base mb-2" style="color:#0D1117;">Plantão emergencial</h3>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Cobertura para casos críticos fora do horário comercial, garantindo continuidade da operação dos seus clientes.</p>
+      </div>
+
+      <div class="fade-in card-hover rounded-2xl border p-6" style="background:#FFFFFF;border-color:#E5E7EB;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#F8F9FA;">
+          <svg width="20" height="20" fill="none" stroke="#0D1117" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-base mb-2" style="color:#0D1117;">Visitas técnicas sob demanda</h3>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Deslocamento presencial quando o problema exige atendimento no local do cliente, com agendamento ágil.</p>
+      </div>
+
+      <div class="fade-in card-hover rounded-2xl border p-6" style="background:#FFFFFF;border-color:#E5E7EB;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#F8F9FA;">
+          <svg width="20" height="20" fill="none" stroke="#0D1117" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-base mb-2" style="color:#0D1117;">Implantação e apoio em ERP</h3>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Suporte especializado em automação comercial, ERP e PDV para garantir a implantação sem falhas e sem atrasos.</p>
+      </div>
+
+      <div class="fade-in card-hover rounded-2xl border p-6 md:col-span-2 lg:col-span-1" style="background:#FFFFFF;border-color:#E5E7EB;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#F8F9FA;">
+          <svg width="20" height="20" fill="none" stroke="#0D1117" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-base mb-2" style="color:#0D1117;">Documentação e relatórios</h3>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Registro de cada atendimento, base de conhecimento estruturada e relatório mensal para acompanhamento da operação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GESTÃO E TRANSPARÊNCIA ===================== -->
+<section class="py-20 lg:py-28 relative overflow-hidden noise" style="background:#0D1117;">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <!-- Copy -->
+      <div class="fade-in">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#6B7280;">Transparência operacional</p>
+        <h2 class="font-geist font-bold text-3xl lg:text-4xl leading-tight mb-5 text-white">
+          Você não terceiriza<br/><span style="color:#00C853;">no escuro.</span>
+        </h2>
+        <p class="text-base leading-relaxed mb-8" style="color:#9CA3AF;">
+          A operação é acompanhada com processo, documentação e indicadores. Você sabe o que está sendo feito, como está sendo feito e qual resultado está sendo entregue.
+        </p>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,200,83,0.15);">
+              <svg width="12" height="12" fill="none" stroke="#00C853" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <p class="text-sm" style="color:#9CA3AF;">SLA monitorado com meta definida em contrato</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,200,83,0.15);">
+              <svg width="12" height="12" fill="none" stroke="#00C853" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <p class="text-sm" style="color:#9CA3AF;">Relatório mensal com volume, tempo e qualidade de atendimento</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,200,83,0.15);">
+              <svg width="12" height="12" fill="none" stroke="#00C853" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <p class="text-sm" style="color:#9CA3AF;">Documentação viva de cada chamado e procedimento</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,200,83,0.15);">
+              <svg width="12" height="12" fill="none" stroke="#00C853" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <p class="text-sm" style="color:#9CA3AF;">Técnico dedicado que conhece a fundo a sua operação</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Painel de métricas simulado -->
+      <div class="fade-in" style="transition-delay:0.15s;">
+        <div class="rounded-2xl border p-5" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.08);">
+          <div class="flex items-center justify-between mb-5 pb-4 border-b" style="border-color:rgba(255,255,255,0.08);">
+            <p class="text-sm font-semibold text-white">Relatório — Julho 2026</p>
+            <span class="text-xs px-2 py-1 rounded-full" style="background:rgba(0,200,83,0.15);color:#00C853;">Gerado automaticamente</span>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1.5">
+                <p class="text-xs" style="color:#9CA3AF;">Chamados resolvidos</p>
+                <p class="text-xs font-semibold text-white">87 / 91</p>
+              </div>
+              <div class="h-1.5 rounded-full" style="background:rgba(255,255,255,0.08);">
+                <div class="h-1.5 rounded-full" style="background:#00C853;width:96%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5">
+                <p class="text-xs" style="color:#9CA3AF;">SLA dentro do prazo</p>
+                <p class="text-xs font-semibold text-white">94%</p>
+              </div>
+              <div class="h-1.5 rounded-full" style="background:rgba(255,255,255,0.08);">
+                <div class="h-1.5 rounded-full" style="background:#00C853;width:94%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5">
+                <p class="text-xs" style="color:#9CA3AF;">Tempo médio de resposta</p>
+                <p class="text-xs font-semibold text-white">1h 42min</p>
+              </div>
+              <div class="h-1.5 rounded-full" style="background:rgba(255,255,255,0.08);">
+                <div class="h-1.5 rounded-full" style="background:#00C853;width:78%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5">
+                <p class="text-xs" style="color:#9CA3AF;">Satisfação do cliente final</p>
+                <p class="text-xs font-semibold text-white">98%</p>
+              </div>
+              <div class="h-1.5 rounded-full" style="background:rgba(255,255,255,0.08);">
+                <div class="h-1.5 rounded-full" style="background:#00C853;width:98%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 mt-5 pt-4 border-t" style="border-color:rgba(255,255,255,0.08);">
+            <div class="text-center">
+              <p class="text-lg font-bold font-geist text-white">12</p>
+              <p class="text-xs mt-0.5" style="color:#6B7280;">Clientes ativos</p>
+            </div>
+            <div class="text-center border-x" style="border-color:rgba(255,255,255,0.08);">
+              <p class="text-lg font-bold font-geist text-white">91</p>
+              <p class="text-xs mt-0.5" style="color:#6B7280;">Chamados/mês</p>
+            </div>
+            <div class="text-center">
+              <p class="text-lg font-bold font-geist" style="color:#00C853;">0</p>
+              <p class="text-xs mt-0.5" style="color:#6B7280;">Escalonamentos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GARANTIA ===================== -->
+<section id="garantia" class="py-20 lg:py-28" style="background:#F8F9FA;">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8">
+    <div class="fade-in rounded-3xl border overflow-hidden" style="background:#FFFFFF;border-color:#E5E7EB;">
+      <div class="grid lg:grid-cols-2">
+        <!-- Left -->
+        <div class="p-10 lg:p-14">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-8" style="background:#DCFCE7;color:#15803D;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            30 dias sem custo
+          </div>
+          <h2 class="font-geist font-bold text-3xl lg:text-4xl leading-tight mb-5" style="color:#0D1117;">
+            Teste a operação por 30 dias antes de assumir um compromisso.
+          </h2>
+          <p class="text-base leading-relaxed mb-8" style="color:#6B7280;">
+            Durante o período de experiência, sua revenda valida o atendimento, o processo e a adaptação da equipe F5 à sua operação.
+          </p>
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
+             target="_blank" rel="noopener"
+             class="btn-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm"
+             style="background:#00C853;color:#0D1117;">
+            Quero testar a F5
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+        <!-- Right -->
+        <div class="p-10 lg:p-14 border-t lg:border-t-0 lg:border-l" style="border-color:#E5E7EB;background:#F8F9FA;">
+          <p class="text-sm font-semibold mb-6" style="color:#0D1117;">O que está incluído nos 30 dias:</p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0D1117;">
+                <svg width="12" height="12" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed" style="color:#2B2B2B;">Diagnóstico e onboarding completo da sua operação</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0D1117;">
+                <svg width="12" height="12" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed" style="color:#2B2B2B;">Atendimento remoto com SLA monitorado</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0D1117;">
+                <svg width="12" height="12" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed" style="color:#2B2B2B;">Documentação e relatório do período</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0D1117;">
+                <svg width="12" height="12" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed" style="color:#2B2B2B;">Sem contrato e sem compromisso financeiro</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0D1117;">
+                <svg width="12" height="12" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed" style="color:#2B2B2B;">Contrato flexível com encerramento mediante aviso prévio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-20 lg:py-28" style="background:#FFFFFF;">
+  <div class="max-w-3xl mx-auto px-5 lg:px-8">
+    <div class="text-center mb-14 fade-in">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#6B7280;">Dúvidas frequentes</p>
+      <h2 class="font-geist font-bold text-3xl lg:text-4xl leading-tight" style="color:#0D1117;">Perguntas e respostas</h2>
+    </div>
+
+    <div class="space-y-3 fade-in">
+      <!-- FAQ items -->
+      <div class="faq-item rounded-2xl border overflow-hidden" style="border-color:#E5E7EB;">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-gray-50 transition-colors" aria-expanded="false">
+          <span class="font-medium text-sm" style="color:#0D1117;">Como vou confiar meu suporte a uma equipe terceirizada?</span>
+          <svg class="faq-icon flex-shrink-0" width="18" height="18" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-5">
+          <p class="text-sm leading-relaxed pb-5" style="color:#6B7280;">Confiança se constrói com processo, não com promessa. A F5 trabalha com treinamento, documentação, indicadores e período de experiência sem custo para validar a parceria antes de qualquer contrato. Você acompanha cada etapa.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl border overflow-hidden" style="border-color:#E5E7EB;">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-gray-50 transition-colors" aria-expanded="false">
+          <span class="font-medium text-sm" style="color:#0D1117;">Como funciona o onboarding?</span>
+          <svg class="faq-icon flex-shrink-0" width="18" height="18" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-5">
+          <p class="text-sm leading-relaxed pb-5" style="color:#6B7280;">Começamos com um diagnóstico da sua operação atual: volume de chamados, ferramentas usadas, perfil dos seus clientes e dores mais comuns. Em seguida, nossa equipe realiza a transferência de conhecimento, configura os canais e inicia o atendimento com SLA definido.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl border overflow-hidden" style="border-color:#E5E7EB;">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-gray-50 transition-colors" aria-expanded="false">
+          <span class="font-medium text-sm" style="color:#0D1117;">A F5 atende pelo WhatsApp?</span>
+          <svg class="faq-icon flex-shrink-0" width="18" height="18" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-5">
+          <p class="text-sm leading-relaxed pb-5" style="color:#6B7280;">Sim. O atendimento é realizado pelos canais que seus clientes já usam: WhatsApp, Digisac e AnyDesk. Você não precisa trocar de ferramenta nem treinar seus clientes para abrir chamado.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl border overflow-hidden" style="border-color:#E5E7EB;">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-gray-50 transition-colors" aria-expanded="false">
+          <span class="font-medium text-sm" style="color:#0D1117;">Existe suporte emergencial?</span>
+          <svg class="faq-icon flex-shrink-0" width="18" height="18" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-5">
+          <p class="text-sm leading-relaxed pb-5" style="color:#6B7280;">Sim. O plantão emergencial é um serviço opcional para cobrir casos críticos fora do horário comercial. Ideal para revendas que atendem clientes com operação contínua ou sensível a downtime.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl border overflow-hidden" style="border-color:#E5E7EB;">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-gray-50 transition-colors" aria-expanded="false">
+          <span class="font-medium text-sm" style="color:#0D1117;">Preciso trocar minhas ferramentas atuais?</span>
+          <svg class="faq-icon flex-shrink-0" width="18" height="18" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-5">
+          <p class="text-sm leading-relaxed pb-5" style="color:#6B7280;">Não necessariamente. A F5 trabalha com Digisac, AnyDesk e WhatsApp — ferramentas já amplamente usadas por revendas de automação comercial. Se você usar outras ferramentas, avaliamos a compatibilidade no diagnóstico inicial.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl border overflow-hidden" style="border-color:#E5E7EB;">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-gray-50 transition-colors" aria-expanded="false">
+          <span class="font-medium text-sm" style="color:#0D1117;">O contrato é flexível?</span>
+          <svg class="faq-icon flex-shrink-0" width="18" height="18" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </button>
+        <div class="faq-answer px-5">
+          <p class="text-sm leading-relaxed pb-5" style="color:#6B7280;">Sim. O contrato pode ser encerrado mediante aviso prévio, sem multa excessiva. A F5 acredita que a parceria deve se sustentar pelo resultado, não pela burocracia contratual.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-20 lg:py-28 relative overflow-hidden noise" style="background:#0D1117;">
+  <div class="max-w-3xl mx-auto px-5 lg:px-8 text-center fade-in">
+    <p class="text-xs font-semibold uppercase tracking-widest mb-6" style="color:#6B7280;">Próximo passo</p>
+    <h2 class="font-geist font-bold text-3xl lg:text-5xl leading-tight mb-6 text-white">
+      Pronto para tirar o suporte técnico<br/>das costas da sua equipe?
+    </h2>
+    <p class="text-base leading-relaxed mb-10" style="color:#9CA3AF;">
+      Fale com a F5 Solution e entenda como estruturar uma operação de suporte mais profissional para sua revenda.
+    </p>
+    <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
+       target="_blank" rel="noopener"
+       class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-base"
+       style="background:#00C853;color:#0D1117;">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Falar com a F5 no WhatsApp
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer style="background:#0D1117;border-top:1px solid rgba(255,255,255,0.06);">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8 py-12">
+    <div class="grid md:grid-cols-3 gap-8 mb-10">
+      <div>
+        <p class="font-geist font-bold text-lg mb-3 text-white">F5 <span style="color:#00C853;">Solution</span></p>
+        <p class="text-sm leading-relaxed" style="color:#6B7280;">Terceirização de suporte técnico para revendas de automação comercial e empresas de ERP.</p>
+      </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest mb-4 text-white">Navegação</p>
+        <div class="space-y-2">
+          <a href="#servicos" class="block text-sm hover:text-white transition-colors" style="color:#6B7280;">Serviços</a>
+          <a href="#como-funciona" class="block text-sm hover:text-white transition-colors" style="color:#6B7280;">Como funciona</a>
+          <a href="#garantia" class="block text-sm hover:text-white transition-colors" style="color:#6B7280;">Garantia</a>
+          <a href="#faq" class="block text-sm hover:text-white transition-colors" style="color:#6B7280;">FAQ</a>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest mb-4 text-white">Contato</p>
+        <div class="space-y-2">
+          <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="flex items-center gap-2 text-sm hover:text-white transition-colors" style="color:#6B7280;">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp (placeholder)
+          </a>
+          <a href="mailto:contato@f5solution.com.br" class="flex items-center gap-2 text-sm hover:text-white transition-colors" style="color:#6B7280;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            contato@f5solution.com.br
+          </a>
+          <p class="flex items-center gap-2 text-sm" style="color:#6B7280;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            São Paulo, SP
+          </p>
+          <p class="flex items-center gap-2 text-sm" style="color:#6B7280;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            f5solution.com.br
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4" style="border-color:rgba(255,255,255,0.06);">
+      <p class="text-xs" style="color:#4B5563;">© 2026 F5 Solution. Todos os direitos reservados.</p>
+      <p class="text-xs" style="color:#4B5563;">f5solution.com.br</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WA button (mobile) -->
+<a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
+   target="_blank" rel="noopener"
+   aria-label="Abrir WhatsApp"
+   class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center md:hidden"
+   style="background:#00C853;">
+  <svg width="26" height="26" fill="white" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+  // Mobile menu
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    iconOpen.classList.toggle('hidden', isOpen);
+    iconClose.classList.toggle('hidden', !isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  // Close menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
+  });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('.faq-icon');
+      const isOpen = answer.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
+      document.querySelectorAll('.faq-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+
+      if (!isOpen) {
+        answer.classList.add('open');
+        icon.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
 </body>
 </html>
