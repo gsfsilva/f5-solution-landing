@@ -24,6 +24,8 @@
 | Fundo | `#F8F9FA` |
 | Acento | `#00C853` |
 | Texto | `#2B2B2B` |
+| Borda | `#E5E7EB` |
+| Texto secundário | `#6B7280` |
 
 ---
 
@@ -31,17 +33,18 @@
 
 ```
 f5-solution-landing/
-├── docs/                         # Documentação estratégica por sprint
-│   ├── sprint-1-analise.md       # Crítica estratégica do briefing
-│   ├── sprint-2-prompt-mestre.md
-│   └── sprint-3-arquitetura.md
-├── src/                          # Código-fonte
-│   ├── index.html
+├── docs/
+│   ├── sprint-1-analise.md         ✅ Crítica estratégica do briefing
+│   ├── sprint-2-prompt-mestre.md   ✅ Prompt Mestre completo
+│   └── sprint-3-arquitetura.md     🔜 Pendente
+├── src/
+│   ├── index.html                  🔜 Sprint 3
 │   ├── css/
 │   └── js/
-├── assets/                       # Imagens, ícones, logos
-├── reports/                      # Relatórios internos (arquiteto)
-│   └── sprint-1-report.md
+├── assets/
+├── reports/
+│   ├── sprint-1-report.md          ✅ Relatório interno Sprint 1
+│   └── sprint-2-report.md          ✅ Relatório interno Sprint 2
 └── README.md
 ```
 
@@ -52,9 +55,9 @@ f5-solution-landing/
 | Sprint | Status | Descrição |
 |---|---|---|
 | Sprint 1 | ✅ Concluída | Crítica estratégica do briefing |
-| Sprint 2 | 🔜 Pendente | Prompt Mestre |
-| Sprint 3 | 🔜 Pendente | Arquitetura técnica |
-| Sprint 4 | 🔜 Pendente | HTML + Tailwind |
+| Sprint 2 | ✅ Concluída | Prompt Mestre |
+| Sprint 3 | 🔜 Pendente | HTML + Tailwind CSS |
+| Sprint 4 | 🔜 Pendente | Responsividade e ajustes |
 | Sprint 5 | 🔜 Pendente | Integrações e deploy |
 
 ---
@@ -62,7 +65,6 @@ f5-solution-landing/
 ## Como rodar localmente
 
 ```bash
-# Sem build step — abrir direto no browser
 open src/index.html
 ```
 
