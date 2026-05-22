@@ -6,16 +6,15 @@
 
 ## Stack
 
-- **HTML + CSS modular** (custom properties) + **Tailwind CDN** (Sprint 3) → **CSS puro** (Sprint 4)
-- **Hospedagem:** Vercel *(Sprint 5)*
-- **Analytics:** Google Analytics 4 + Meta Pixel *(Sprint 5)*
+- **HTML + CSS modular** (custom properties)
+- **Hospedagem:** Vercel *(Sprint 6)*
+- **Analytics:** Google Analytics 4 + Meta Pixel *(Sprint 6)*
 - **Integração:** WhatsApp Business
 
 ## Fontes
 
-- Display/Headings: Inter com `letter-spacing: -0.035em` (equivalente visual ao Geist)
+- Display/Headings: Inter com `letter-spacing: -0.036em`
 - Corpo: Inter — [Google Fonts](https://fonts.google.com/specimen/Inter)
-- Geist real será carregado via Vercel CDN no deploy
 
 ## Paleta
 
@@ -37,15 +36,17 @@ f5-solution-landing/
 ├── docs/
 │   ├── sprint-1-analise.md          ✅ Crítica estratégica
 │   ├── sprint-2-prompt-mestre.md    ✅ Prompt Mestre
-│   └── sprint-4-refinamento.md      ✅ Documentação de refinamento
+│   ├── sprint-4-refinamento.md      ✅ Refinamento visual
+│   └── sprint-5-cro.md              ✅ Otimização de conversão
 ├── src/
-│   └── index.html                   ✅ Sprint 4 — versão refinada (1.125 linhas)
+│   └── index.html                   ✅ Sprint 5 — versão otimizada (763 linhas)
 ├── assets/
 ├── reports/
 │   ├── sprint-1-report.md           ✅
 │   ├── sprint-2-report.md           ✅
 │   ├── sprint-3-report.md           ✅
-│   └── sprint-4-report.md           ✅
+│   ├── sprint-4-report.md           ✅
+│   └── sprint-5-report.md           ✅
 └── README.md
 ```
 
@@ -57,9 +58,10 @@ f5-solution-landing/
 |---|---|---|
 | Sprint 1 | ✅ Concluída | Crítica estratégica do briefing |
 | Sprint 2 | ✅ Concluída | Prompt Mestre |
-| Sprint 3 | ✅ Concluída | HTML + Tailwind — primeira versão funcional |
+| Sprint 3 | ✅ Concluída | HTML + CSS — primeira versão funcional |
 | Sprint 4 | ✅ Concluída | Refinamento visual, UX e acessibilidade |
-| Sprint 5 | 🔜 Pendente | Integrações, placeholders reais e deploy Vercel |
+| Sprint 5 | ✅ Concluída | Otimização de conversão (CRO) |
+| Sprint 6 | 🔜 Pendente | Deploy, integrações e placeholders reais |
 
 ---
 
@@ -71,16 +73,14 @@ cd f5-solution-landing
 open src/index.html
 ```
 
-Ou com VS Code + extensão **Live Server** → botão "Go Live".
-
 ---
 
-## Placeholders a substituir antes do deploy (Sprint 5)
+## Placeholders a substituir antes do deploy (Sprint 6)
 
 - [ ] `5500000000000` → número real do WhatsApp Business
 - [ ] `contato@f5solution.com.br` → e-mail real
 - [ ] Logo textual → arquivo SVG real da marca
-- [ ] Dados do dashboard (simulados) → dados reais quando disponíveis
+- [ ] IDs do GA4 e Meta Pixel
 
 ---
 
