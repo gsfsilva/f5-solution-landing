@@ -1,14 +1,82 @@
+<!--
+  ============================================================
+  F5 Solution — Landing Page
+  ============================================================
+  Versão: Sprint 6 (produção-ready)
+  Arquivo: index.html
+  Deploy: Vercel (projeto estático)
+
+  CHECKLIST ANTES DO DEPLOY:
+  1. Substituir WA_NUMBER (linha ~30) pelo número real
+  2. Substituir G-XXXXXXXXXX pelo ID real do GA4
+  3. Substituir META_PIXEL_ID pelo ID real do Pixel Meta
+  4. Criar e subir imagem /og-image.jpg (1200×630px)
+  5. Salvar como index.html e conectar ao Vercel
+  6. Configurar domínio f5solution.com.br no painel Vercel
+  ============================================================
+-->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>F5 Solution — Suporte Técnico Terceirizado para Revendas</title>
-  <meta name="description" content="A F5 Solution estrutura e opera o suporte técnico da sua revenda de automação comercial ou ERP. SLA definido, equipe especializada, 30 dias sem custo para validar." />
+
+  <!-- ── SEO ── -->
+  <title>F5 Solution | Terceirização de Suporte Técnico para Revendas</title>
+  <meta name="description" content="Terceirize o suporte técnico da sua revenda com a F5 Solution. Atendimento remoto, SLA, indicadores, documentação e 30 dias de experiência sem custo." />
+  <link rel="canonical" href="https://f5solution.com.br/" />
+
+  <!-- ── Open Graph ── -->
+  <!-- TODO: criar imagem social 1200×630px e subir em /og-image.jpg -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://f5solution.com.br/" />
+  <meta property="og:title"       content="F5 Solution | Terceirização de Suporte Técnico para Revendas" />
+  <meta property="og:description" content="Terceirize o suporte técnico da sua revenda com a F5 Solution. Atendimento remoto, SLA, indicadores, documentação e 30 dias de experiência sem custo." />
+  <meta property="og:image"       content="https://f5solution.com.br/og-image.jpg" />
+  <meta property="og:locale"      content="pt_BR" />
+  <meta property="og:site_name"   content="F5 Solution" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="F5 Solution | Terceirização de Suporte Técnico para Revendas" />
+  <meta name="twitter:description" content="Terceirize o suporte técnico da sua revenda com a F5 Solution. Atendimento remoto, SLA, indicadores e 30 dias sem custo." />
+  <meta name="twitter:image"       content="https://f5solution.com.br/og-image.jpg" />
+
+  <!-- ── Google Analytics 4 (placeholder) ── -->
+  <!-- TODO: substituir G-XXXXXXXXXX pelo ID real do GA4 após criar propriedade -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- ── Meta Pixel (placeholder) ── -->
+  <!-- TODO: substituir META_PIXEL_ID pelo ID real do Pixel Meta -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'META_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1" alt="" /></noscript>
+
+  <!-- ── Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
   <style>
+    /* ── WhatsApp URL centralizada ──────────────────────────────
+       TODO: alterar WA_LINK abaixo para o número real antes do deploy.
+       Formato: https://wa.me/55DDDNUMERO?text=...
+       ─────────────────────────────────────────────────────────── */
+
     :root {
       --ink:    #0D1117;
       --canvas: #F8F9FA;
@@ -22,277 +90,270 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
     body { font-family: 'Inter', system-ui, sans-serif; background: var(--canvas); color: var(--body); line-height: 1.6; }
 
-    /* ── Typography ── */
     .display { font-weight: 800; letter-spacing: -0.036em; line-height: 1.07; }
     .heading  { font-weight: 700; letter-spacing: -0.026em; line-height: 1.18; }
     .label    { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
 
-    /* ── Reveal ── */
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.52s cubic-bezier(.22,1,.36,1), transform 0.52s cubic-bezier(.22,1,.36,1); }
     .reveal.show { opacity: 1; transform: none; }
-    .d1 { transition-delay: 0.07s; } .d2 { transition-delay: 0.14s; }
-    .d3 { transition-delay: 0.21s; } .d4 { transition-delay: 0.28s; }
-    .d5 { transition-delay: 0.35s; }
+    .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}.d5{transition-delay:.35s}
 
-    /* ── NAV ── */
-    #nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 60px; border-bottom: 1px solid transparent;
-      transition: background 0.28s, border-color 0.28s, backdrop-filter 0.28s;
-    }
-    #nav.scrolled { background: rgba(255,255,255,0.93); border-color: var(--rim); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-    .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .nav-logo { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
-    .nav-logo span { color: var(--go); }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { font-size: 0.8125rem; font-weight: 500; color: var(--sub); text-decoration: none; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-cta { display: inline-flex; align-items: center; gap: 7px; padding: 7px 16px; border-radius: 8px; font-size: 0.8125rem; font-weight: 600; background: var(--ink); color: #fff; text-decoration: none; transition: background 0.15s, transform 0.15s; white-space: nowrap; }
-    .nav-cta:hover { background: #1c2535; transform: translateY(-1px); }
-    #hamburger { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--ink); }
-    #mobile-drawer { display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 99; background: #fff; border-bottom: 1px solid var(--rim); padding: 20px 28px 28px; transform: translateY(-6px); opacity: 0; transition: transform 0.22s cubic-bezier(.22,1,.36,1), opacity 0.22s; pointer-events: none; }
-    #mobile-drawer.open { transform: none; opacity: 1; pointer-events: all; }
-    #mobile-drawer a { display: block; font-size: 0.9375rem; font-weight: 500; color: var(--sub); text-decoration: none; padding: 11px 0; border-bottom: 1px solid var(--rim); }
-    #mobile-drawer a:last-of-type { border: none; }
-    #mobile-drawer .mob-cta { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; padding: 14px; border-radius: 10px; font-size: 0.9375rem; font-weight: 700; background: var(--go); color: var(--ink); text-decoration: none; }
-    @media (max-width: 767px) {
-      .nav-links, .nav-cta { display: none !important; }
-      #hamburger { display: flex; align-items: center; }
-      #mobile-drawer { display: block; }
-    }
+    /* NAV */
+    #nav { position:fixed;top:0;left:0;right:0;z-index:100;height:60px;border-bottom:1px solid transparent;transition:background .28s,border-color .28s,backdrop-filter .28s; }
+    #nav.scrolled { background:rgba(255,255,255,.93);border-color:var(--rim);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px); }
+    .nav-inner { max-width:1120px;margin:0 auto;padding:0 28px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px; }
+    .nav-logo { font-weight:800;font-size:1.05rem;letter-spacing:-.03em;color:var(--ink);text-decoration:none; }
+    .nav-logo span { color:var(--go); }
+    .nav-links { display:flex;align-items:center;gap:28px; }
+    .nav-links a { font-size:.8125rem;font-weight:500;color:var(--sub);text-decoration:none;transition:color .15s; }
+    .nav-links a:hover { color:var(--ink); }
+    .nav-cta { display:inline-flex;align-items:center;gap:7px;padding:7px 16px;border-radius:8px;font-size:.8125rem;font-weight:600;background:var(--ink);color:#fff;text-decoration:none;transition:background .15s,transform .15s;white-space:nowrap; }
+    .nav-cta:hover { background:#1c2535;transform:translateY(-1px); }
+    #hamburger { display:none;background:none;border:none;padding:6px;cursor:pointer;color:var(--ink); }
+    #mobile-drawer { display:none;position:fixed;top:60px;left:0;right:0;z-index:99;background:#fff;border-bottom:1px solid var(--rim);padding:20px 28px 28px;transform:translateY(-6px);opacity:0;transition:transform .22s cubic-bezier(.22,1,.36,1),opacity .22s;pointer-events:none; }
+    #mobile-drawer.open { transform:none;opacity:1;pointer-events:all; }
+    #mobile-drawer a { display:block;font-size:.9375rem;font-weight:500;color:var(--sub);text-decoration:none;padding:11px 0;border-bottom:1px solid var(--rim); }
+    #mobile-drawer a:last-of-type { border:none; }
+    #mobile-drawer .mob-cta { display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;padding:14px;border-radius:10px;font-size:.9375rem;font-weight:700;background:var(--go);color:var(--ink);text-decoration:none; }
+    @media(max-width:767px){.nav-links,.nav-cta{display:none!important}#hamburger{display:flex;align-items:center}#mobile-drawer{display:block}}
 
-    /* ── HERO ── */
-    #hero { min-height: 100vh; padding: 120px 28px 80px; display: flex; align-items: center; background: var(--canvas); position: relative; overflow: hidden; }
-    #hero::before { content: ''; position: absolute; top: -180px; right: -180px; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,83,0.07) 0%, transparent 68%); pointer-events: none; }
-    .hero-inner { max-width: 1120px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 100px; border: 1px solid var(--rim); margin-bottom: 24px; }
-    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--go); flex-shrink: 0; animation: dot-pulse 2.2s ease-in-out infinite; }
-    @keyframes dot-pulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
-    .hero-h1 { font-size: clamp(2.1rem, 3.8vw, 3.375rem); color: var(--ink); margin-bottom: 18px; }
-    .hero-h1 em { font-style: normal; color: var(--go); }
-    .hero-sub { font-size: 1.0625rem; color: var(--sub); max-width: 430px; line-height: 1.68; margin-bottom: 30px; }
-    .hero-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 34px; }
-    .hero-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--body); line-height: 1.5; }
-    .bcheck { width: 18px; height: 18px; border-radius: 50%; background: rgba(0,200,83,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 11px; }
+    /* HERO */
+    #hero { min-height:100vh;padding:120px 28px 80px;display:flex;align-items:center;background:var(--canvas);position:relative;overflow:hidden; }
+    #hero::before { content:'';position:absolute;top:-180px;right:-180px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,83,.07) 0%,transparent 68%);pointer-events:none; }
+    .hero-inner { max-width:1120px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center; }
+    .hero-badge { display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:100px;border:1px solid var(--rim);margin-bottom:24px; }
+    .hero-dot { width:6px;height:6px;border-radius:50%;background:var(--go);flex-shrink:0;animation:dot-pulse 2.2s ease-in-out infinite; }
+    @keyframes dot-pulse{0%,100%{opacity:1}50%{opacity:.45}}
+    .hero-h1 { font-size:clamp(2.1rem,3.8vw,3.375rem);color:var(--ink);margin-bottom:18px; }
+    .hero-h1 em { font-style:normal;color:var(--go); }
+    .hero-sub { font-size:1.0625rem;color:var(--sub);max-width:430px;line-height:1.68;margin-bottom:30px; }
+    .hero-bullets { list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:34px; }
+    .hero-bullets li { display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:var(--body);line-height:1.5; }
+    .bcheck { width:18px;height:18px;border-radius:50%;background:rgba(0,200,83,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px; }
+    .hero-ctas { display:flex;flex-wrap:wrap;gap:11px; }
 
-    /* Buttons */
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 10px; font-size: 0.9375rem; font-weight: 700; background: var(--go); color: var(--ink); text-decoration: none; transition: filter 0.15s, transform 0.15s; }
-    .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
-    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 10px; font-size: 0.9375rem; font-weight: 600; border: 1px solid var(--rim); color: var(--sub); text-decoration: none; transition: border-color 0.15s, color 0.15s; }
-    .btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
-    .btn-large { padding: 16px 32px; font-size: 1rem; border-radius: 12px; box-shadow: 0 0 36px rgba(0,200,83,0.18); }
-    .btn-large:hover { box-shadow: 0 0 52px rgba(0,200,83,0.28); }
+    .btn-primary { display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:10px;font-size:.9375rem;font-weight:700;background:var(--go);color:var(--ink);text-decoration:none;transition:filter .15s,transform .15s; }
+    .btn-primary:hover { filter:brightness(1.08);transform:translateY(-1px); }
+    .btn-secondary { display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:10px;font-size:.9375rem;font-weight:600;border:1px solid var(--rim);color:var(--sub);text-decoration:none;transition:border-color .15s,color .15s; }
+    .btn-secondary:hover { border-color:var(--ink);color:var(--ink); }
+    .btn-large { padding:16px 32px;font-size:1rem;border-radius:12px;box-shadow:0 0 36px rgba(0,200,83,.18); }
+    .btn-large:hover { box-shadow:0 0 52px rgba(0,200,83,.28); }
 
     /* Hero panel */
-    .hero-panel { background: #fff; border: 1px solid var(--rim); border-radius: 16px; padding: 22px; box-shadow: 0 4px 28px rgba(13,17,23,0.07), 0 1px 3px rgba(13,17,23,0.04); }
-    .panel-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--rim); margin-bottom: 16px; }
-    .panel-title { font-size: 0.8125rem; font-weight: 700; color: var(--ink); }
-    .panel-sub { font-size: 0.6875rem; color: var(--sub); margin-top: 2px; }
-    .status-pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 100px; background: #DCFCE7; font-size: 0.6875rem; font-weight: 700; color: #15803D; }
-    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--go); animation: dot-pulse 2.2s ease-in-out infinite; }
-    .panel-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-bottom: 16px; }
-    .metric-box { background: var(--canvas); border-radius: 9px; padding: 11px; }
-    .metric-label { font-size: 0.6875rem; color: var(--sub); font-weight: 500; }
-    .metric-val { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); margin: 3px 0 2px; }
-    .metric-note { font-size: 0.6875rem; color: var(--go); font-weight: 600; }
-    .tickets-label { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--sub); margin-bottom: 9px; }
-    .ticket { display: flex; align-items: center; gap: 9px; padding: 9px 11px; border: 1px solid var(--rim); border-radius: 9px; margin-bottom: 7px; }
-    .ticket:last-child { margin-bottom: 0; }
-    .t-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-    .t-info { flex: 1; min-width: 0; }
-    .t-title { font-size: 0.75rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .t-ch { font-size: 0.6875rem; color: var(--sub); margin-top: 1px; }
-    .t-badge { font-size: 0.625rem; font-weight: 700; padding: 3px 7px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-    .badge-done { background: #DCFCE7; color: #15803D; }
-    .badge-prog { background: #FEF3C7; color: #92400E; }
-    .badge-open { background: #DBEAFE; color: #1D4ED8; }
-    .panel-sla { margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--rim); }
-    .sla-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
-    .sla-lbl { font-size: 0.6875rem; color: var(--sub); }
-    .sla-val { font-size: 0.6875rem; font-weight: 700; color: var(--ink); }
-    .sla-track { height: 4px; background: var(--rim); border-radius: 99px; overflow: hidden; }
-    .sla-fill { height: 100%; background: var(--go); border-radius: 99px; }
+    .hero-panel { background:#fff;border:1px solid var(--rim);border-radius:16px;padding:22px;box-shadow:0 4px 28px rgba(13,17,23,.07),0 1px 3px rgba(13,17,23,.04); }
+    .panel-top { display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--rim);margin-bottom:16px; }
+    .panel-title { font-size:.8125rem;font-weight:700;color:var(--ink); }
+    .panel-sub { font-size:.6875rem;color:var(--sub);margin-top:2px; }
+    .status-pill { display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:100px;background:#DCFCE7;font-size:.6875rem;font-weight:700;color:#15803D; }
+    .status-dot { width:6px;height:6px;border-radius:50%;background:var(--go);animation:dot-pulse 2.2s ease-in-out infinite; }
+    .panel-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:16px; }
+    .metric-box { background:var(--canvas);border-radius:9px;padding:11px; }
+    .metric-label { font-size:.6875rem;color:var(--sub);font-weight:500; }
+    .metric-val { font-size:1.3rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin:3px 0 2px; }
+    .metric-note { font-size:.6875rem;color:var(--go);font-weight:600; }
+    .tickets-label { font-size:.6875rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--sub);margin-bottom:9px; }
+    .ticket { display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--rim);border-radius:9px;margin-bottom:7px; }
+    .ticket:last-child { margin-bottom:0; }
+    .t-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
+    .t-info { flex:1;min-width:0; }
+    .t-title { font-size:.75rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    .t-ch { font-size:.6875rem;color:var(--sub);margin-top:1px; }
+    .t-badge { font-size:.625rem;font-weight:700;padding:3px 7px;border-radius:100px;white-space:nowrap;flex-shrink:0; }
+    .badge-done{background:#DCFCE7;color:#15803D}.badge-prog{background:#FEF3C7;color:#92400E}.badge-open{background:#DBEAFE;color:#1D4ED8}
+    .panel-sla { margin-top:14px;padding-top:13px;border-top:1px solid var(--rim); }
+    .sla-row { display:flex;justify-content:space-between;margin-bottom:6px; }
+    .sla-lbl { font-size:.6875rem;color:var(--sub); }
+    .sla-val { font-size:.6875rem;font-weight:700;color:var(--ink); }
+    .sla-track { height:4px;background:var(--rim);border-radius:99px;overflow:hidden; }
+    .sla-fill { height:100%;background:var(--go);border-radius:99px; }
+    @media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:44px}#hero{min-height:auto;padding:100px 28px 60px}.hero-panel{max-width:500px}}
 
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 44px; }
-      #hero { min-height: auto; padding: 100px 28px 60px; }
-      .hero-panel { max-width: 500px; }
-    }
+    /* STRIP */
+    #strip { background:var(--ink); }
+    .strip-inner { max-width:1120px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px; }
+    .strip-item { display:flex;flex-direction:column;gap:12px; }
+    .strip-icon { width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);border-radius:8px; }
+    .strip-title { font-size:.875rem;font-weight:700;color:#fff;line-height:1.3; }
+    .strip-desc { font-size:.75rem;color:var(--sub);line-height:1.5; }
+    @media(max-width:680px){.strip-inner{grid-template-columns:1fr 1fr;gap:24px 18px}}
 
-    /* ── STRIP ── */
-    #strip { background: var(--ink); }
-    .strip-inner { max-width: 1120px; margin: 0 auto; padding: 48px 28px; display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; }
-    .strip-item { display: flex; flex-direction: column; gap: 12px; }
-    .strip-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.07); border-radius: 8px; }
-    .strip-title { font-size: 0.875rem; font-weight: 700; color: #fff; line-height: 1.3; }
-    .strip-desc { font-size: 0.75rem; color: var(--sub); line-height: 1.5; }
-    @media (max-width: 680px) { .strip-inner { grid-template-columns: 1fr 1fr; gap: 24px 18px; } }
+    /* SHARED */
+    .section { padding:92px 28px; }
+    .section-white { background:#fff; }
+    .section-canvas { background:var(--canvas); }
+    .section-dark { background:var(--ink);position:relative;overflow:hidden; }
+    .container { max-width:1120px;margin:0 auto; }
+    .section-eyebrow { display:block;color:var(--sub);margin-bottom:13px; }
+    .section-h2 { color:var(--ink);font-size:clamp(1.6rem,2.8vw,2.375rem);margin-bottom:14px; }
+    .section-h2-white { color:#fff;font-size:clamp(1.6rem,2.8vw,2.375rem);margin-bottom:14px; }
+    .section-lead { font-size:1.0625rem;color:var(--sub);line-height:1.65;max-width:540px; }
+    .section-lead-dark { font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.65; }
+    .section-center { text-align:center; }
+    .mx-auto { margin-left:auto;margin-right:auto; }
 
-    /* ── SHARED SECTION ── */
-    .section { padding: 92px 28px; }
-    .section-white { background: #fff; }
-    .section-canvas { background: var(--canvas); }
-    .section-dark { background: var(--ink); position: relative; overflow: hidden; }
-    .container { max-width: 1120px; margin: 0 auto; }
-    .section-eyebrow { display: block; color: var(--sub); margin-bottom: 13px; }
-    .section-h2 { color: var(--ink); font-size: clamp(1.6rem, 2.8vw, 2.375rem); margin-bottom: 14px; }
-    .section-h2-white { color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.375rem); margin-bottom: 14px; }
-    .section-lead { font-size: 1.0625rem; color: var(--sub); line-height: 1.65; max-width: 540px; }
-    .section-lead-dark { font-size: 1.0625rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
-    .section-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
+    /* DOR */
+    .dor-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px; }
+    .dor-card { background:#fff;border:1px solid var(--rim);border-radius:13px;padding:26px 22px;transition:box-shadow .2s,transform .2s; }
+    .dor-card:hover { box-shadow:0 8px 24px rgba(13,17,23,.09);transform:translateY(-2px); }
+    .dor-icon { width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:16px; }
+    .dor-card h3 { font-size:.9375rem;font-weight:700;color:var(--ink);margin-bottom:7px; }
+    .dor-card p { font-size:.875rem;color:var(--sub);line-height:1.6; }
+    .dor-cta { margin-top:44px;font-size:1rem;font-weight:600;color:var(--ink);letter-spacing:-.015em;line-height:1.5;max-width:560px; }
+    @media(max-width:768px){.dor-grid{grid-template-columns:1fr}}
 
-    /* ── DOR ── */
-    .dor-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 52px; }
-    .dor-card { background: #fff; border: 1px solid var(--rim); border-radius: 13px; padding: 26px 22px; transition: box-shadow 0.2s, transform 0.2s; }
-    .dor-card:hover { box-shadow: 0 8px 24px rgba(13,17,23,0.09); transform: translateY(-2px); }
-    .dor-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-    .dor-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--ink); margin-bottom: 7px; }
-    .dor-card p { font-size: 0.875rem; color: var(--sub); line-height: 1.6; }
-    .dor-cta { margin-top: 44px; font-size: 1rem; font-weight: 600; color: var(--ink); letter-spacing: -0.015em; line-height: 1.5; max-width: 560px; }
-    @media (max-width: 768px) { .dor-grid { grid-template-columns: 1fr; } }
+    /* STEPS */
+    .steps-desktop { display:flex;align-items:flex-start;margin-top:52px; }
+    .step { flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative; }
+    .step:not(:last-child)::after { content:'';position:absolute;top:19px;left:50%;right:-50%;height:1px;background:var(--rim);z-index:0; }
+    .step-num { width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;font-weight:800;color:#fff;background:var(--ink);position:relative;z-index:1;margin-bottom:16px;flex-shrink:0; }
+    .step-num.active { background:var(--go);color:var(--ink); }
+    .step-body { padding:0 10px; }
+    .step-title { font-size:.875rem;font-weight:700;color:var(--ink);margin-bottom:5px; }
+    .step-desc { font-size:.8rem;color:var(--sub);line-height:1.55; }
+    .steps-mobile { display:none;flex-direction:column;margin-top:44px; }
+    .step-mob { display:flex;gap:16px; }
+    .step-mob-l { display:flex;flex-direction:column;align-items:center; }
+    .step-mob-num { width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8125rem;font-weight:800;color:#fff;background:var(--ink);flex-shrink:0; }
+    .step-mob-num.active { background:var(--go);color:var(--ink); }
+    .step-mob-line { flex:1;width:1px;background:var(--rim);margin:5px auto;min-height:22px; }
+    .step-mob-body { padding-bottom:26px;flex:1; }
+    .step-mob-title { font-size:.9375rem;font-weight:700;color:var(--ink);margin-bottom:4px; }
+    .step-mob-desc { font-size:.875rem;color:var(--sub);line-height:1.55; }
+    @media(max-width:768px){.steps-desktop{display:none}.steps-mobile{display:flex}}
 
-    /* ── STEPS ── */
-    .steps-desktop { display: flex; align-items: flex-start; margin-top: 52px; }
-    .step { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
-    .step:not(:last-child)::after { content: ''; position: absolute; top: 19px; left: 50%; right: -50%; height: 1px; background: var(--rim); z-index: 0; }
-    .step-num { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 800; color: #fff; background: var(--ink); position: relative; z-index: 1; margin-bottom: 16px; flex-shrink: 0; }
-    .step-num.active { background: var(--go); color: var(--ink); }
-    .step-body { padding: 0 10px; }
-    .step-title { font-size: 0.875rem; font-weight: 700; color: var(--ink); margin-bottom: 5px; }
-    .step-desc { font-size: 0.8rem; color: var(--sub); line-height: 1.55; }
-    .steps-mobile { display: none; flex-direction: column; margin-top: 44px; }
-    .step-mob { display: flex; gap: 16px; }
-    .step-mob-l { display: flex; flex-direction: column; align-items: center; }
-    .step-mob-num { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 800; color: #fff; background: var(--ink); flex-shrink: 0; }
-    .step-mob-num.active { background: var(--go); color: var(--ink); }
-    .step-mob-line { flex: 1; width: 1px; background: var(--rim); margin: 5px auto; min-height: 22px; }
-    .step-mob-body { padding-bottom: 26px; flex: 1; }
-    .step-mob-title { font-size: 0.9375rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .step-mob-desc { font-size: 0.875rem; color: var(--sub); line-height: 1.55; }
-    @media (max-width: 768px) { .steps-desktop { display: none; } .steps-mobile { display: flex; } }
+    /* SERVIÇOS */
+    .svc-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px; }
+    .svc-card { background:#fff;border:1px solid var(--rim);border-radius:13px;padding:26px 22px;transition:box-shadow .2s,transform .2s; }
+    .svc-card:hover { box-shadow:0 8px 24px rgba(13,17,23,.08);transform:translateY(-2px); }
+    .svc-card.feat { border-color:rgba(0,200,83,.28);background:linear-gradient(140deg,#fff 55%,rgba(0,200,83,.04)); }
+    .svc-icon { width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--canvas);margin-bottom:16px; }
+    .svc-card.feat .svc-icon { background:rgba(0,200,83,.1); }
+    .svc-title { font-size:.9375rem;font-weight:700;color:var(--ink);margin-bottom:7px; }
+    .svc-desc { font-size:.845rem;color:var(--sub);line-height:1.6; }
+    @media(max-width:960px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
 
-    /* ── SERVIÇOS ── */
-    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 52px; }
-    .svc-card { background: #fff; border: 1px solid var(--rim); border-radius: 13px; padding: 26px 22px; transition: box-shadow 0.2s, transform 0.2s; }
-    .svc-card:hover { box-shadow: 0 8px 24px rgba(13,17,23,0.08); transform: translateY(-2px); }
-    .svc-card.feat { border-color: rgba(0,200,83,0.28); background: linear-gradient(140deg, #fff 55%, rgba(0,200,83,0.04)); }
-    .svc-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; background: var(--canvas); margin-bottom: 16px; }
-    .svc-card.feat .svc-icon { background: rgba(0,200,83,0.1); }
-    .svc-title { font-size: 0.9375rem; font-weight: 700; color: var(--ink); margin-bottom: 7px; }
-    .svc-desc { font-size: 0.845rem; color: var(--sub); line-height: 1.6; }
-    @media (max-width: 960px) { .svc-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 580px) { .svc-grid { grid-template-columns: 1fr; } }
+    /* GESTÃO */
+    .gestao-grid { display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center; }
+    .gestao-list { display:flex;flex-direction:column;gap:16px;margin-top:32px; }
+    .g-item { display:flex;align-items:flex-start;gap:12px; }
+    .g-check { width:20px;height:20px;border-radius:50%;background:rgba(0,200,83,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px; }
+    .g-item p { font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.55; }
+    .dash-panel { background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:15px;padding:20px; }
+    .dash-hdr { display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:16px; }
+    .dash-title { font-size:.8125rem;font-weight:700;color:#fff; }
+    .dash-badge { font-size:.6875rem;padding:4px 9px;border-radius:100px;background:rgba(0,200,83,.15);color:var(--go);font-weight:700; }
+    .db-row { margin-bottom:13px; }
+    .db-row:last-child { margin-bottom:0; }
+    .db-meta { display:flex;justify-content:space-between;margin-bottom:5px; }
+    .db-name { font-size:.75rem;color:rgba(255,255,255,.45); }
+    .db-val { font-size:.75rem;font-weight:700;color:#fff; }
+    .db-track { height:4px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden; }
+    .db-fill { height:100%;background:var(--go);border-radius:99px; }
+    .dash-kpis { display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07); }
+    .kpi { text-align:center; }
+    .kpi-val { font-size:1.2rem;font-weight:800;letter-spacing:-.03em;color:#fff; }
+    .kpi-val.accent { color:var(--go); }
+    .kpi-lbl { font-size:.6875rem;color:rgba(255,255,255,.38);margin-top:2px; }
+    @media(max-width:840px){.gestao-grid{grid-template-columns:1fr;gap:36px}}
 
-    /* ── GESTÃO ── */
-    .gestao-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
-    .gestao-list { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
-    .g-item { display: flex; align-items: flex-start; gap: 12px; }
-    .g-check { width: 20px; height: 20px; border-radius: 50%; background: rgba(0,200,83,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-    .g-item p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
-    .dash-panel { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 15px; padding: 20px; }
-    .dash-hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 16px; }
-    .dash-title { font-size: 0.8125rem; font-weight: 700; color: #fff; }
-    .dash-badge { font-size: 0.6875rem; padding: 4px 9px; border-radius: 100px; background: rgba(0,200,83,0.15); color: var(--go); font-weight: 700; }
-    .db-row { margin-bottom: 13px; }
-    .db-row:last-child { margin-bottom: 0; }
-    .db-meta { display: flex; justify-content: space-between; margin-bottom: 5px; }
-    .db-name { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
-    .db-val { font-size: 0.75rem; font-weight: 700; color: #fff; }
-    .db-track { height: 4px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; }
-    .db-fill { height: 100%; background: var(--go); border-radius: 99px; }
-    .dash-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.07); }
-    .kpi { text-align: center; }
-    .kpi-val { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; }
-    .kpi-val.accent { color: var(--go); }
-    .kpi-lbl { font-size: 0.6875rem; color: rgba(255,255,255,0.38); margin-top: 2px; }
-    @media (max-width: 840px) { .gestao-grid { grid-template-columns: 1fr; gap: 36px; } }
+    /* GARANTIA */
+    .garantia-wrap { background:#fff;border:1px solid var(--rim);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr; }
+    .garantia-l { padding:52px 44px; }
+    .garantia-r { padding:44px;background:var(--canvas);border-left:1px solid var(--rim); }
+    .garantia-badge { display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:100px;background:#DCFCE7;font-size:.75rem;font-weight:700;color:#15803D;margin-bottom:26px; }
+    .garantia-h2 { font-size:clamp(1.3rem,2.4vw,1.875rem);color:var(--ink);margin-bottom:16px;line-height:1.22; }
+    .garantia-p { font-size:.9375rem;color:var(--sub);line-height:1.65;margin-bottom:28px; }
+    .garantia-list { list-style:none;display:flex;flex-direction:column;gap:13px; }
+    .garantia-list li { display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:var(--body); }
+    .g2-check { width:20px;height:20px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px; }
+    .garantia-r-title { font-size:.875rem;font-weight:700;color:var(--ink);margin-bottom:18px; }
+    @media(max-width:768px){.garantia-wrap{grid-template-columns:1fr}.garantia-l{padding:36px 26px}.garantia-r{padding:26px;border-left:none;border-top:1px solid var(--rim)}}
 
-    /* ── GARANTIA ── */
-    .garantia-wrap { background: #fff; border: 1px solid var(--rim); border-radius: 18px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
-    .garantia-l { padding: 52px 44px; }
-    .garantia-r { padding: 44px; background: var(--canvas); border-left: 1px solid var(--rim); }
-    .garantia-badge { display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px; border-radius: 100px; background: #DCFCE7; font-size: 0.75rem; font-weight: 700; color: #15803D; margin-bottom: 26px; }
-    .garantia-h2 { font-size: clamp(1.3rem, 2.4vw, 1.875rem); color: var(--ink); margin-bottom: 16px; line-height: 1.22; }
-    .garantia-p { font-size: 0.9375rem; color: var(--sub); line-height: 1.65; margin-bottom: 28px; }
-    .garantia-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
-    .garantia-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--body); }
-    .g2-check { width: 20px; height: 20px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-    .garantia-r-title { font-size: 0.875rem; font-weight: 700; color: var(--ink); margin-bottom: 18px; }
-    @media (max-width: 768px) {
-      .garantia-wrap { grid-template-columns: 1fr; }
-      .garantia-l { padding: 36px 26px; }
-      .garantia-r { padding: 26px; border-left: none; border-top: 1px solid var(--rim); }
-    }
+    /* FORMULÁRIO */
+    .form-section { background:var(--canvas);border-top:1px solid var(--rim); }
+    .form-wrap { background:#fff;border:1px solid var(--rim);border-radius:18px;padding:44px;max-width:680px;margin:0 auto; }
+    .form-title { font-size:1.25rem;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.02em; }
+    .form-sub { font-size:.9rem;color:var(--sub);margin-bottom:28px;line-height:1.55; }
+    .form-grid { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+    .form-group { display:flex;flex-direction:column;gap:5px; }
+    .form-group.full { grid-column:1/-1; }
+    .form-group label { font-size:.8125rem;font-weight:600;color:var(--ink); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { width:100%;padding:10px 13px;border:1px solid var(--rim);border-radius:8px;font-size:.9rem;font-family:inherit;color:var(--body);background:#fff;transition:border-color .15s,box-shadow .15s;outline:none; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color:var(--go);box-shadow:0 0 0 3px rgba(0,200,83,.12); }
+    .form-group textarea { resize:vertical;min-height:90px; }
+    .form-note { font-size:.75rem;color:var(--sub);margin-top:4px; }
+    .btn-form { display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border-radius:10px;font-size:.9375rem;font-weight:700;background:var(--ink);color:#fff;border:none;cursor:pointer;margin-top:20px;transition:background .15s,transform .15s;font-family:inherit; }
+    .btn-form:hover { background:#1c2535;transform:translateY(-1px); }
+    .form-wa-note { text-align:center;margin-top:14px;font-size:.8125rem;color:var(--sub); }
+    .form-wa-note a { color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--rim); }
+    .form-wa-note a:hover { border-color:var(--ink); }
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr}.form-wrap{padding:28px 22px}}
 
-    /* ── FAQ ── */
-    .faq-list { display: flex; flex-direction: column; gap: 9px; margin-top: 52px; }
-    .faq-item { border: 1px solid var(--rim); border-radius: 11px; overflow: hidden; background: #fff; }
-    .faq-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 19px 21px; text-align: left; background: none; border: none; cursor: pointer; transition: background 0.15s; }
-    .faq-trigger:hover { background: var(--canvas); }
-    .faq-trigger:focus-visible { outline: 2px solid var(--go); outline-offset: -2px; }
-    .faq-q { font-size: 0.9375rem; font-weight: 600; color: var(--ink); }
-    .faq-icon { flex-shrink: 0; width: 21px; height: 21px; border-radius: 50%; border: 1.5px solid var(--rim); display: flex; align-items: center; justify-content: center; transition: transform 0.28s, background 0.18s, border-color 0.18s; }
-    .faq-icon.open { transform: rotate(45deg); background: var(--ink); border-color: var(--ink); }
-    .faq-icon.open svg { stroke: #fff; }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.36s cubic-bezier(.22,1,.36,1); }
-    .faq-inner { padding: 0 21px 18px; font-size: 0.9rem; color: var(--sub); line-height: 1.65; border-top: 1px solid var(--rim); padding-top: 15px; }
+    /* FAQ */
+    .faq-list { display:flex;flex-direction:column;gap:9px;margin-top:52px; }
+    .faq-item { border:1px solid var(--rim);border-radius:11px;overflow:hidden;background:#fff; }
+    .faq-trigger { width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 21px;text-align:left;background:none;border:none;cursor:pointer;transition:background .15s; }
+    .faq-trigger:hover { background:var(--canvas); }
+    .faq-trigger:focus-visible { outline:2px solid var(--go);outline-offset:-2px; }
+    .faq-q { font-size:.9375rem;font-weight:600;color:var(--ink); }
+    .faq-icon { flex-shrink:0;width:21px;height:21px;border-radius:50%;border:1.5px solid var(--rim);display:flex;align-items:center;justify-content:center;transition:transform .28s,background .18s,border-color .18s; }
+    .faq-icon.open { transform:rotate(45deg);background:var(--ink);border-color:var(--ink); }
+    .faq-icon.open svg { stroke:#fff; }
+    .faq-answer { max-height:0;overflow:hidden;transition:max-height .36s cubic-bezier(.22,1,.36,1); }
+    .faq-inner { padding:0 21px 18px;font-size:.9rem;color:var(--sub);line-height:1.65;border-top:1px solid var(--rim);padding-top:15px; }
 
-    /* ── CTA FINAL ── */
-    .cta-section { background: var(--ink); padding: 92px 28px; text-align: center; position: relative; overflow: hidden; }
-    .cta-section::before { content: ''; position: absolute; bottom: -260px; left: 50%; transform: translateX(-50%); width: 760px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,83,0.09) 0%, transparent 64%); pointer-events: none; }
-    .cta-inner { max-width: 660px; margin: 0 auto; position: relative; z-index: 1; }
-    .cta-h2 { font-size: clamp(1.75rem, 3.6vw, 2.875rem); color: #fff; margin-bottom: 18px; }
-    .cta-p { font-size: 1.0625rem; color: rgba(255,255,255,0.48); line-height: 1.65; margin-bottom: 36px; }
+    /* CTA FINAL */
+    .cta-section { background:var(--ink);padding:92px 28px;text-align:center;position:relative;overflow:hidden; }
+    .cta-section::before { content:'';position:absolute;bottom:-260px;left:50%;transform:translateX(-50%);width:760px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,83,.09) 0%,transparent 64%);pointer-events:none; }
+    .cta-inner { max-width:660px;margin:0 auto;position:relative;z-index:1; }
+    .cta-h2 { font-size:clamp(1.75rem,3.6vw,2.875rem);color:#fff;margin-bottom:18px; }
+    .cta-p { font-size:1.0625rem;color:rgba(255,255,255,.48);line-height:1.65;margin-bottom:36px; }
 
-    /* ── FOOTER ── */
-    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 52px 28px 30px; }
-    .footer-inner { max-width: 1120px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .footer-logo { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.03em; color: #fff; margin-bottom: 10px; }
-    .footer-logo span { color: var(--go); }
-    .footer-tag { font-size: 0.875rem; color: rgba(255,255,255,0.35); line-height: 1.6; }
-    .footer-col-title { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.32); margin-bottom: 14px; }
-    .footer-links { display: flex; flex-direction: column; gap: 9px; }
-    .footer-links a { font-size: 0.875rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.15s; }
-    .footer-links a:hover { color: #fff; }
-    .footer-contact { display: flex; flex-direction: column; gap: 9px; }
-    .fc-item { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.15s; }
-    .fc-item:hover { color: #fff; }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 24px; }
-    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.22); }
-    @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; gap: 28px; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+    /* FOOTER */
+    footer { background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:52px 28px 30px; }
+    .footer-inner { max-width:1120px;margin:0 auto; }
+    .footer-top { display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.07); }
+    .footer-logo { font-weight:800;font-size:1.05rem;letter-spacing:-.03em;color:#fff;margin-bottom:10px; }
+    .footer-logo span { color:var(--go); }
+    .footer-tag { font-size:.875rem;color:rgba(255,255,255,.35);line-height:1.6; }
+    .footer-col-title { font-size:.6875rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:14px; }
+    .footer-links { display:flex;flex-direction:column;gap:9px; }
+    .footer-links a { font-size:.875rem;color:rgba(255,255,255,.48);text-decoration:none;transition:color .15s; }
+    .footer-links a:hover { color:#fff; }
+    .footer-contact { display:flex;flex-direction:column;gap:9px; }
+    .fc-item { display:flex;align-items:center;gap:8px;font-size:.875rem;color:rgba(255,255,255,.48);text-decoration:none;transition:color .15s; }
+    .fc-item:hover { color:#fff; }
+    .footer-bottom { display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px; }
+    .footer-copy { font-size:.75rem;color:rgba(255,255,255,.22); }
+    @media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:28px}.footer-bottom{flex-direction:column;align-items:flex-start}}
 
-    /* ── Floating WA ── */
-    .wa-fab { position: fixed; bottom: 22px; right: 22px; z-index: 200; width: 52px; height: 52px; border-radius: 50%; background: var(--go); display: none; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 18px rgba(0,200,83,0.38); transition: transform 0.2s, box-shadow 0.2s; }
-    .wa-fab:hover { transform: translateY(-2px); box-shadow: 0 7px 26px rgba(0,200,83,0.5); }
-    @media (max-width: 767px) { .wa-fab { display: flex; } }
+    /* FAB */
+    .wa-fab { position:fixed;bottom:22px;right:22px;z-index:200;width:52px;height:52px;border-radius:50%;background:var(--go);display:none;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 18px rgba(0,200,83,.38);transition:transform .2s,box-shadow .2s; }
+    .wa-fab:hover { transform:translateY(-2px);box-shadow:0 7px 26px rgba(0,200,83,.5); }
+    @media(max-width:767px){.wa-fab{display:flex}}
 
-    /* ── Focus ── */
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--go); outline-offset: 3px; border-radius: 4px; }
-
-    /* ── Divider ── */
-    .mt-cta { margin-top: 40px; }
-
-    /* SVG icon helpers */
-    .ico { display: inline-flex; align-items: center; justify-content: center; }
+    a:focus-visible,button:focus-visible{outline:2px solid var(--go);outline-offset:3px;border-radius:4px}
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ===================== NAV ===================== -->
 <nav id="nav" role="navigation" aria-label="Navegação principal">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo" aria-label="F5 Solution — início">F5 <span>Solution</span></a>
-    <div class="nav-links">
-      <a href="#servicos">Serviços</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#garantia">Garantia</a>
-      <a href="#faq">FAQ</a>
+    <div class="nav-links" role="list">
+      <a href="#servicos"       role="listitem">Serviços</a>
+      <a href="#como-funciona" role="listitem">Como funciona</a>
+      <a href="#garantia"      role="listitem">Garantia</a>
+      <a href="#faq"           role="listitem">FAQ</a>
     </div>
-    <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
-       target="_blank" rel="noopener noreferrer" class="nav-cta" aria-label="Abrir WhatsApp da F5 Solution">
+    <a href="#" class="nav-cta wa-link" aria-label="Falar com a F5 Solution pelo WhatsApp"
+       target="_blank" rel="noopener noreferrer" data-conversion="whatsapp">
       <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       Falar com a F5
     </a>
@@ -304,18 +365,18 @@
 </nav>
 
 <div id="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Menu mobile">
-  <a href="#servicos" onclick="closeDrawer()">Serviços</a>
-  <a href="#como-funciona" onclick="closeDrawer()">Como funciona</a>
-  <a href="#garantia" onclick="closeDrawer()">Garantia</a>
-  <a href="#faq" onclick="closeDrawer()">FAQ</a>
-  <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
-     target="_blank" rel="noopener noreferrer" class="mob-cta" onclick="closeDrawer()">
+  <a href="#servicos"       onclick="closeDrawer()">Serviços</a>
+  <a href="#como-funciona"  onclick="closeDrawer()">Como funciona</a>
+  <a href="#garantia"       onclick="closeDrawer()">Garantia</a>
+  <a href="#faq"            onclick="closeDrawer()">FAQ</a>
+  <a href="#" class="mob-cta wa-link" onclick="closeDrawer()"
+     target="_blank" rel="noopener noreferrer" data-conversion="whatsapp">
     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     Falar com a F5 no WhatsApp
   </a>
 </div>
 
-<!-- HERO -->
+<!-- ===================== HERO ===================== -->
 <section id="hero" aria-labelledby="hero-h1">
   <div class="hero-inner">
     <div>
@@ -329,30 +390,19 @@
       </h1>
       <p class="hero-sub reveal d2">A F5 Solution assume a operação de suporte da sua revenda: equipe especializada, SLA definido, ferramentas que seus clientes já usam e processo documentado do primeiro dia.</p>
       <ul class="hero-bullets reveal d3" aria-label="Principais benefícios">
-        <li>
-          <span class="bcheck" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#00C853" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-          Atendimento remoto ágil via Digisac, WhatsApp e AnyDesk — sem trocar o que funciona.
-        </li>
-        <li>
-          <span class="bcheck" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#00C853" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-          Custo operacional reduzido sem CLT, sem rescisão e sem gap de cobertura.
-        </li>
-        <li>
-          <span class="bcheck" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#00C853" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-          SLA monitorado, indicadores e equipe especializada em automação comercial.
-        </li>
+        <li><span class="bcheck" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#00C853" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>Atendimento remoto ágil via Digisac, WhatsApp e AnyDesk — sem trocar o que funciona.</li>
+        <li><span class="bcheck" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#00C853" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>Custo operacional reduzido sem CLT, sem rescisão e sem gap de cobertura.</li>
+        <li><span class="bcheck" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#00C853" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>SLA monitorado, indicadores e equipe especializada em automação comercial.</li>
       </ul>
       <div class="hero-ctas reveal d4">
-        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
-           target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Falar com a F5 Solution pelo WhatsApp">
+        <a href="#" class="btn-primary wa-link" aria-label="Quero terceirizar meu suporte — abrir WhatsApp"
+           target="_blank" rel="noopener noreferrer" data-conversion="whatsapp">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Quero terceirizar meu suporte
         </a>
         <a href="#servicos" class="btn-secondary">Ver serviços</a>
       </div>
     </div>
-
-    <!-- Painel operacional -->
     <div class="reveal d2" aria-hidden="true">
       <div class="hero-panel">
         <div class="panel-top">
@@ -374,7 +424,7 @@
   </div>
 </section>
 
-<!-- PROVA RÁPIDA -->
+<!-- ===================== PROVA RÁPIDA ===================== -->
 <div id="strip" aria-label="Diferenciais da F5 Solution">
   <div class="strip-inner">
     <div class="strip-item reveal">
@@ -400,7 +450,7 @@
   </div>
 </div>
 
-<!-- DOR E CONTEXTO -->
+<!-- ===================== DOR ===================== -->
 <section id="dor" class="section section-canvas" aria-labelledby="dor-h2">
   <div class="container">
     <div class="reveal">
@@ -429,40 +479,21 @@
   </div>
 </section>
 
-<!-- COMO FUNCIONA -->
+<!-- ===================== COMO FUNCIONA ===================== -->
 <section id="como-funciona" class="section section-white" aria-labelledby="funciona-h2">
   <div class="container">
-    <div class="reveal section-center" style="max-width:540px; margin:0 auto;">
+    <div class="reveal section-center" style="max-width:540px;margin:0 auto;">
       <span class="label section-eyebrow">Processo estruturado</span>
       <h2 id="funciona-h2" class="heading section-h2">Como a F5 assume<br/>seu suporte — sem bagunçar</h2>
       <p class="section-lead mx-auto" style="margin-top:12px;">A transição é organizada em etapas para que sua operação não sofra interrupção nem perda de qualidade.</p>
     </div>
-
-    <!-- Desktop -->
     <div class="steps-desktop" aria-label="Etapas do processo">
-      <div class="step reveal d1">
-        <div class="step-num" aria-label="Etapa 1">1</div>
-        <div class="step-body"><div class="step-title">Diagnóstico</div><div class="step-desc">Mapeamos volume de chamados, ferramentas, perfil dos seus clientes e pontos críticos da operação.</div></div>
-      </div>
-      <div class="step reveal d2">
-        <div class="step-num" aria-label="Etapa 2">2</div>
-        <div class="step-body"><div class="step-title">Onboarding</div><div class="step-desc">Transferência de conhecimento, documentação da operação e adaptação da equipe F5 ao seu contexto.</div></div>
-      </div>
-      <div class="step reveal d3">
-        <div class="step-num" aria-label="Etapa 3">3</div>
-        <div class="step-body"><div class="step-title">Organização dos canais</div><div class="step-desc">Configuração de Digisac, AnyDesk e WhatsApp Business com SLA e processos definidos.</div></div>
-      </div>
-      <div class="step reveal d4">
-        <div class="step-num" aria-label="Etapa 4">4</div>
-        <div class="step-body"><div class="step-title">Início do atendimento</div><div class="step-desc">A equipe F5 começa a operar. Seu cliente não percebe a diferença — a qualidade só melhora.</div></div>
-      </div>
-      <div class="step reveal d5">
-        <div class="step-num active" aria-label="Etapa 5 — contínua">5</div>
-        <div class="step-body"><div class="step-title">Monitoramento contínuo</div><div class="step-desc">Indicadores, relatórios mensais e melhoria operacional contínua — você acompanha tudo.</div></div>
-      </div>
+      <div class="step reveal d1"><div class="step-num" aria-label="Etapa 1">1</div><div class="step-body"><div class="step-title">Diagnóstico</div><div class="step-desc">Mapeamos volume, ferramentas, perfil dos clientes e pontos críticos da operação atual.</div></div></div>
+      <div class="step reveal d2"><div class="step-num" aria-label="Etapa 2">2</div><div class="step-body"><div class="step-title">Onboarding</div><div class="step-desc">Transferência de conhecimento, documentação da operação e adaptação da equipe F5 ao seu contexto.</div></div></div>
+      <div class="step reveal d3"><div class="step-num" aria-label="Etapa 3">3</div><div class="step-body"><div class="step-title">Organização dos canais</div><div class="step-desc">Configuração de Digisac, AnyDesk e WhatsApp Business com SLA e processos definidos.</div></div></div>
+      <div class="step reveal d4"><div class="step-num" aria-label="Etapa 4">4</div><div class="step-body"><div class="step-title">Início do atendimento</div><div class="step-desc">A equipe F5 começa a operar. Seu cliente não percebe a diferença — a qualidade só melhora.</div></div></div>
+      <div class="step reveal d5"><div class="step-num active" aria-label="Etapa 5 — contínua">5</div><div class="step-body"><div class="step-title">Monitoramento contínuo</div><div class="step-desc">Indicadores, relatórios mensais e melhoria operacional contínua — você acompanha tudo.</div></div></div>
     </div>
-
-    <!-- Mobile -->
     <div class="steps-mobile" role="list" aria-label="Etapas do processo">
       <div class="step-mob reveal" role="listitem"><div class="step-mob-l"><div class="step-mob-num">1</div><div class="step-mob-line"></div></div><div class="step-mob-body"><div class="step-mob-title">Diagnóstico</div><div class="step-mob-desc">Mapeamos volume, ferramentas e pontos críticos da operação atual.</div></div></div>
       <div class="step-mob reveal d1" role="listitem"><div class="step-mob-l"><div class="step-mob-num">2</div><div class="step-mob-line"></div></div><div class="step-mob-body"><div class="step-mob-title">Onboarding</div><div class="step-mob-desc">Transferência de conhecimento e documentação da operação.</div></div></div>
@@ -473,10 +504,10 @@
   </div>
 </section>
 
-<!-- SERVIÇOS -->
+<!-- ===================== SERVIÇOS ===================== -->
 <section id="servicos" class="section section-canvas" aria-labelledby="svc-h2">
   <div class="container">
-    <div class="reveal section-center" style="max-width:520px; margin:0 auto;">
+    <div class="reveal section-center" style="max-width:520px;margin:0 auto;">
       <span class="label section-eyebrow">O que a F5 entrega</span>
       <h2 id="svc-h2" class="heading section-h2">Serviços para revendas<br/>de automação e ERP</h2>
     </div>
@@ -510,12 +541,12 @@
   </div>
 </section>
 
-<!-- GESTÃO E TRANSPARÊNCIA -->
+<!-- ===================== GESTÃO ===================== -->
 <section class="section section-dark" aria-labelledby="gestao-h2">
   <div class="container">
     <div class="gestao-grid">
       <div class="reveal">
-        <span class="label section-eyebrow" style="color:var(--sub); display:block; margin-bottom:13px;">Transparência operacional</span>
+        <span class="label section-eyebrow" style="color:var(--sub);display:block;margin-bottom:13px;">Transparência operacional</span>
         <h2 id="gestao-h2" class="heading section-h2-white">Você não terceiriza<br/><span style="color:var(--go);">no escuro.</span></h2>
         <p class="section-lead-dark" style="margin-top:14px;">A operação é acompanhada com processo, documentação e indicadores. Você sabe o que está sendo feito, como está sendo feito e qual resultado está sendo entregue — sem precisar perguntar.</p>
         <div class="gestao-list">
@@ -527,14 +558,14 @@
       </div>
       <div class="reveal d2" aria-hidden="true">
         <div class="dash-panel">
-          <div class="dash-hdr"><div class="dash-title">Relatório operacional</div><div class="dash-badge">Julho 2026</div></div>
+          <div class="dash-hdr"><div class="dash-title">Relatório operacional</div><div class="dash-badge">Exemplo</div></div>
           <div class="db-row"><div class="db-meta"><span class="db-name">Chamados resolvidos</span><span class="db-val">87 / 91</span></div><div class="db-track"><div class="db-fill" style="width:96%"></div></div></div>
           <div class="db-row"><div class="db-meta"><span class="db-name">SLA dentro do prazo</span><span class="db-val">94%</span></div><div class="db-track"><div class="db-fill" style="width:94%"></div></div></div>
           <div class="db-row"><div class="db-meta"><span class="db-name">Tempo médio de resposta</span><span class="db-val">1h 42min</span></div><div class="db-track"><div class="db-fill" style="width:78%"></div></div></div>
           <div class="db-row"><div class="db-meta"><span class="db-name">Satisfação do cliente final</span><span class="db-val">98%</span></div><div class="db-track"><div class="db-fill" style="width:98%"></div></div></div>
           <div class="dash-kpis">
             <div class="kpi"><div class="kpi-val">12</div><div class="kpi-lbl">Clientes ativos</div></div>
-            <div class="kpi" style="border-left:1px solid rgba(255,255,255,0.07);border-right:1px solid rgba(255,255,255,0.07);"><div class="kpi-val">91</div><div class="kpi-lbl">Chamados/mês</div></div>
+            <div class="kpi" style="border-left:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07);"><div class="kpi-val">91</div><div class="kpi-lbl">Chamados/mês</div></div>
             <div class="kpi"><div class="kpi-val accent">0</div><div class="kpi-lbl">Escalonamentos</div></div>
           </div>
         </div>
@@ -543,7 +574,7 @@
   </div>
 </section>
 
-<!-- GARANTIA -->
+<!-- ===================== GARANTIA ===================== -->
 <section id="garantia" class="section section-canvas" aria-labelledby="garantia-h2">
   <div class="container">
     <div class="garantia-wrap reveal">
@@ -554,8 +585,8 @@
         </div>
         <h2 id="garantia-h2" class="heading garantia-h2">Teste a operação por 30 dias antes de assumir qualquer compromisso.</h2>
         <p class="garantia-p">Durante o período de experiência, sua revenda valida o atendimento, o processo e a adaptação da equipe F5 à sua operação. Sem custo. Sem contrato. Com resultado.</p>
-        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
-           target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Falar com a F5 Solution pelo WhatsApp para testar">
+        <a href="#" class="btn-primary wa-link" aria-label="Quero testar a F5 — abrir WhatsApp"
+           target="_blank" rel="noopener noreferrer" data-conversion="whatsapp">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Quero testar a F5
         </a>
@@ -567,14 +598,14 @@
           <li><span class="g2-check" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="white" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>Atendimento remoto com SLA monitorado</li>
           <li><span class="g2-check" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="white" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>Documentação e relatório do período</li>
           <li><span class="g2-check" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="white" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>Sem contrato e sem compromisso financeiro</li>
-          <li><span class="g2-check" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="white" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>Contrato flexível com encerramento mediante aviso prévio</li>
+          <li><span class="g2-check" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="white" stroke-width="2.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>Encerramento mediante aviso prévio — sem multa</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ===================== FAQ ===================== -->
 <section id="faq" class="section section-white" aria-labelledby="faq-h2">
   <div class="container" style="max-width:740px;">
     <div class="reveal section-center" style="margin-bottom:52px;">
@@ -582,84 +613,85 @@
       <h2 id="faq-h2" class="heading section-h2">Perguntas que todo<br/>decisor faz antes de avançar</h2>
     </div>
     <div class="faq-list reveal">
-
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="fa1">
-          <span class="faq-q">Como vou confiar meu suporte a uma equipe terceirizada?</span>
-          <span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
-        </button>
-        <div class="faq-answer" id="fa1"><div class="faq-inner">A F5 trabalha com treinamento, documentação, indicadores e 30 dias de experiência sem custo para validar a parceria antes de qualquer contrato. Você acompanha cada etapa do processo — sem precisar confiar às cegas.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="fa2">
-          <span class="faq-q">A F5 substitui totalmente minha equipe interna?</span>
-          <span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
-        </button>
-        <div class="faq-answer" id="fa2"><div class="faq-inner">Não necessariamente. A F5 pode atuar como extensão da sua equipe atual — absorvendo o volume que está travando a operação — ou assumir integralmente o suporte técnico. O modelo é definido no diagnóstico inicial conforme a realidade da sua revenda.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="fa3">
-          <span class="faq-q">Quanto tempo leva para começar?</span>
-          <span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
-        </button>
-        <div class="faq-answer" id="fa3"><div class="faq-inner">Após a conversa inicial, o diagnóstico e o onboarding são realizados de forma estruturada para que o atendimento comece o mais rápido possível — sem abrir mão da qualidade da transição. O tempo exato depende do volume e da complexidade da sua operação, mas o processo é desenhado para não arrastar.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="fa4">
-          <span class="faq-q">Como funciona o onboarding?</span>
-          <span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
-        </button>
-        <div class="faq-answer" id="fa4"><div class="faq-inner">Começamos com um diagnóstico da operação atual: volume de chamados, ferramentas, perfil dos clientes e dores mais comuns. Em seguida, a equipe F5 realiza a transferência de conhecimento, documenta os processos, configura os canais e inicia o atendimento com SLA definido.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="fa5">
-          <span class="faq-q">A F5 atende pelo WhatsApp?</span>
-          <span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
-        </button>
-        <div class="faq-answer" id="fa5"><div class="faq-inner">Sim. O atendimento é realizado pelos canais que seus clientes já usam: WhatsApp, Digisac e AnyDesk. Você não precisa trocar de ferramenta nem treinar seus clientes para abrir chamado.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="fa6">
-          <span class="faq-q">Existe suporte emergencial?</span>
-          <span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
-        </button>
-        <div class="faq-answer" id="fa6"><div class="faq-inner">Sim. O plantão emergencial é um serviço opcional para cobrir casos críticos fora do horário comercial. Ideal para revendas cujos clientes têm operação contínua ou são sensíveis a downtime.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="fa7">
-          <span class="faq-q">Preciso trocar minhas ferramentas atuais?</span>
-          <span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
-        </button>
-        <div class="faq-answer" id="fa7"><div class="faq-inner">Não necessariamente. A F5 trabalha com Digisac, AnyDesk e WhatsApp — ferramentas já amplamente usadas por revendas de automação comercial. Se você usar outras, avaliamos a compatibilidade no diagnóstico inicial.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="fa8">
-          <span class="faq-q">O contrato é flexível?</span>
-          <span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
-        </button>
-        <div class="faq-answer" id="fa8"><div class="faq-inner">Sim. O contrato pode ser encerrado mediante aviso prévio, sem multa excessiva. A F5 acredita que a parceria deve se sustentar pelo resultado — não pela burocracia contratual.</div></div>
-      </div>
-
+      <div class="faq-item"><button class="faq-trigger" aria-expanded="false" aria-controls="fa1"><span class="faq-q">Como vou confiar meu suporte a uma equipe terceirizada?</span><span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer" id="fa1"><div class="faq-inner">A F5 trabalha com treinamento, documentação, indicadores e 30 dias de experiência sem custo para validar a parceria antes de qualquer contrato. Você acompanha cada etapa do processo — sem precisar confiar às cegas.</div></div></div>
+      <div class="faq-item"><button class="faq-trigger" aria-expanded="false" aria-controls="fa2"><span class="faq-q">A F5 substitui totalmente minha equipe interna?</span><span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer" id="fa2"><div class="faq-inner">Não necessariamente. A F5 pode atuar como extensão da sua equipe atual — absorvendo o volume que está travando a operação — ou assumir integralmente o suporte técnico. O modelo é definido no diagnóstico inicial conforme a realidade da sua revenda.</div></div></div>
+      <div class="faq-item"><button class="faq-trigger" aria-expanded="false" aria-controls="fa3"><span class="faq-q">Quanto tempo leva para começar?</span><span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer" id="fa3"><div class="faq-inner">Após a conversa inicial, o diagnóstico e o onboarding são conduzidos de forma estruturada para que o atendimento comece o mais rápido possível — sem abrir mão da qualidade da transição.</div></div></div>
+      <div class="faq-item"><button class="faq-trigger" aria-expanded="false" aria-controls="fa4"><span class="faq-q">Como funciona o onboarding?</span><span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer" id="fa4"><div class="faq-inner">Começamos com um diagnóstico da operação atual: volume de chamados, ferramentas, perfil dos clientes e dores mais comuns. Em seguida, a equipe F5 realiza a transferência de conhecimento, documenta os processos, configura os canais e inicia o atendimento com SLA definido.</div></div></div>
+      <div class="faq-item"><button class="faq-trigger" aria-expanded="false" aria-controls="fa5"><span class="faq-q">A F5 atende pelo WhatsApp?</span><span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer" id="fa5"><div class="faq-inner">Sim. O atendimento é realizado pelos canais que seus clientes já usam: WhatsApp, Digisac e AnyDesk. Você não precisa trocar de ferramenta nem treinar seus clientes para abrir chamado.</div></div></div>
+      <div class="faq-item"><button class="faq-trigger" aria-expanded="false" aria-controls="fa6"><span class="faq-q">Existe suporte emergencial?</span><span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer" id="fa6"><div class="faq-inner">Sim. O plantão emergencial é um serviço opcional para cobrir casos críticos fora do horário comercial. Ideal para revendas cujos clientes têm operação contínua ou são sensíveis a downtime.</div></div></div>
+      <div class="faq-item"><button class="faq-trigger" aria-expanded="false" aria-controls="fa7"><span class="faq-q">Preciso trocar minhas ferramentas atuais?</span><span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer" id="fa7"><div class="faq-inner">Não necessariamente. A F5 trabalha com Digisac, AnyDesk e WhatsApp — ferramentas já amplamente usadas por revendas de automação comercial. Se você usar outras, avaliamos a compatibilidade no diagnóstico inicial.</div></div></div>
+      <div class="faq-item"><button class="faq-trigger" aria-expanded="false" aria-controls="fa8"><span class="faq-q">O contrato é flexível?</span><span class="faq-icon" aria-hidden="true"><svg width="10" height="10" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer" id="fa8"><div class="faq-inner">Sim. O contrato pode ser encerrado mediante aviso prévio, sem multa excessiva. A F5 acredita que a parceria deve se sustentar pelo resultado — não pela burocracia contratual.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
+<!-- ===================== FORMULÁRIO ===================== -->
+<section class="section form-section" aria-labelledby="form-h2">
+  <div class="container">
+    <div class="form-wrap reveal">
+      <h2 id="form-h2" class="form-title heading">Prefere deixar seus dados?</h2>
+      <p class="form-sub">Preencha abaixo e nossa equipe entra em contato. Ou, se preferir resposta imediata, use o WhatsApp.</p>
+      <!--
+        TODO: integrar este formulário ao endpoint comercial ou ferramenta de automação.
+        Sugestões: Formspree, Netlify Forms, Make (Integromat), N8N ou webhook próprio.
+      -->
+      <form id="form-contato" method="post" action="" aria-label="Formulário de contato comercial" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="f-nome">Nome *</label>
+            <input type="text" id="f-nome" name="nome" required autocomplete="name" placeholder="Seu nome completo" />
+          </div>
+          <div class="form-group">
+            <label for="f-empresa">Empresa *</label>
+            <input type="text" id="f-empresa" name="empresa" required autocomplete="organization" placeholder="Nome da revenda ou empresa" />
+          </div>
+          <div class="form-group">
+            <label for="f-whatsapp">WhatsApp *</label>
+            <input type="tel" id="f-whatsapp" name="whatsapp" required autocomplete="tel" placeholder="(11) 99999-9999" />
+          </div>
+          <div class="form-group">
+            <label for="f-email">E-mail</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" placeholder="seu@email.com.br" />
+          </div>
+          <div class="form-group full">
+            <label for="f-clientes">Quantidade aproximada de clientes ativos</label>
+            <select id="f-clientes" name="clientes">
+              <option value="">Selecione uma faixa</option>
+              <option value="1-20">Até 20 clientes</option>
+              <option value="21-50">21 a 50 clientes</option>
+              <option value="51-100">51 a 100 clientes</option>
+              <option value="101-200">101 a 200 clientes</option>
+              <option value="201-300">201 a 300 clientes</option>
+              <option value="300+">Mais de 300 clientes</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="f-msg">Conte brevemente sua situação atual (opcional)</label>
+            <textarea id="f-msg" name="mensagem" placeholder="Ex: Minha equipe está sobrecarregada e preciso de uma solução para o suporte técnico..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-form" aria-label="Enviar interesse para a F5 Solution">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+          Enviar interesse
+        </button>
+        <p class="form-wa-note">
+          Prefere resposta imediata?
+          <a href="#" class="wa-link" target="_blank" rel="noopener noreferrer" data-conversion="whatsapp" aria-label="Abrir WhatsApp da F5 Solution">Fale pelo WhatsApp →</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
 <section class="cta-section" aria-labelledby="cta-h2">
   <div class="cta-inner">
-    <span class="label reveal" style="color:var(--sub); display:block; margin-bottom:18px;">Próximo passo</span>
+    <span class="label reveal" style="color:var(--sub);display:block;margin-bottom:18px;">Próximo passo</span>
     <h2 id="cta-h2" class="display cta-h2 reveal d1">Pronto para tirar o suporte técnico das costas da sua equipe?</h2>
     <p class="cta-p reveal d2">Fale com a F5 Solution e entenda como estruturar uma operação de suporte mais profissional para sua revenda — sem contratar, sem risco e com resultado acompanhado desde o primeiro dia.</p>
     <div class="reveal d3">
-      <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
-         target="_blank" rel="noopener noreferrer" class="btn-primary btn-large" aria-label="Abrir WhatsApp da F5 Solution">
+      <a href="#" class="btn-primary btn-large wa-link" aria-label="Falar com a F5 Solution pelo WhatsApp"
+         target="_blank" rel="noopener noreferrer" data-conversion="whatsapp">
         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         Falar com a F5 no WhatsApp
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -668,7 +700,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ===================== FOOTER ===================== -->
 <footer role="contentinfo">
   <div class="footer-inner">
     <div class="footer-top">
@@ -688,10 +720,12 @@
       <div>
         <div class="footer-col-title">Contato</div>
         <div class="footer-contact">
-          <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="fc-item">
+          <!-- TODO: substituir pelo número real do WhatsApp Business antes do deploy -->
+          <a href="#" class="fc-item wa-link" target="_blank" rel="noopener noreferrer" data-conversion="whatsapp" aria-label="WhatsApp da F5 Solution">
             <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            WhatsApp (placeholder)
+            WhatsApp
           </a>
+          <!-- TODO: substituir pelo e-mail real antes do deploy -->
           <a href="mailto:contato@f5solution.com.br" class="fc-item">
             <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             contato@f5solution.com.br
@@ -715,48 +749,117 @@
 </footer>
 
 <!-- Floating WA (mobile) -->
-<a href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico."
-   target="_blank" rel="noopener noreferrer"
-   class="wa-fab" aria-label="Abrir WhatsApp da F5 Solution">
+<a href="#" class="wa-fab wa-link" aria-label="Abrir WhatsApp da F5 Solution"
+   target="_blank" rel="noopener noreferrer" data-conversion="whatsapp">
   <svg width="24" height="24" fill="#0D1117" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
 <script>
 (function(){
+  /*
+   * ============================================================
+   * TODO: substituir o número abaixo pelo WhatsApp Business real
+   * Formato: https://wa.me/55DDDNUMERO?text=...
+   * Exemplo: https://wa.me/5511999999999?text=...
+   * ============================================================
+   */
+  var WA_LINK = 'https://wa.me/5500000000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20F5%20Solution%20e%20quero%20entender%20como%20terceirizar%20meu%20suporte%20t%C3%A9cnico.';
+
+  // Aplicar link WA em todos os elementos .wa-link
+  document.querySelectorAll('.wa-link').forEach(function(el){
+    el.setAttribute('href', WA_LINK);
+  });
+
   // NAV scroll
-  var nav=document.getElementById('nav');
-  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>24);},{passive:true});
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 24);
+  }, { passive: true });
 
   // Mobile drawer
-  var ham=document.getElementById('hamburger');
-  var drawer=document.getElementById('mobile-drawer');
-  var iopen=document.getElementById('ico-open');
-  var iclose=document.getElementById('ico-close');
-  function openDrawer(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');drawer.setAttribute('aria-hidden','false');iopen.style.display='none';iclose.style.display='block';}
-  window.closeDrawer=function(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');drawer.setAttribute('aria-hidden','true');iopen.style.display='block';iclose.style.display='none';};
-  ham.addEventListener('click',function(){drawer.classList.contains('open')?closeDrawer():openDrawer();});
-  document.addEventListener('click',function(e){if(!ham.contains(e.target)&&!drawer.contains(e.target))closeDrawer();});
+  var ham    = document.getElementById('hamburger');
+  var drawer = document.getElementById('mobile-drawer');
+  var iopen  = document.getElementById('ico-open');
+  var iclose = document.getElementById('ico-close');
 
-  // Reveal
-  var els=document.querySelectorAll('.reveal');
-  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:0.07,rootMargin:'0px 0px -28px 0px'});
-  els.forEach(function(el){io.observe(el);});
-  setTimeout(function(){document.querySelectorAll('#hero .reveal').forEach(function(el){el.classList.add('show');});},60);
+  function openDrawer(){
+    drawer.classList.add('open');
+    ham.setAttribute('aria-expanded','true');
+    drawer.setAttribute('aria-hidden','false');
+    iopen.style.display  = 'none';
+    iclose.style.display = 'block';
+  }
+  window.closeDrawer = function(){
+    drawer.classList.remove('open');
+    ham.setAttribute('aria-expanded','false');
+    drawer.setAttribute('aria-hidden','true');
+    iopen.style.display  = 'block';
+    iclose.style.display = 'none';
+  };
+  ham.addEventListener('click', function(){
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+  });
+  document.addEventListener('click', function(e){
+    if (!ham.contains(e.target) && !drawer.contains(e.target)) closeDrawer();
+  });
 
-  // FAQ
+  // Reveal on scroll
+  var els = document.querySelectorAll('.reveal');
+  var io  = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+  setTimeout(function(){
+    document.querySelectorAll('#hero .reveal').forEach(function(el){ el.classList.add('show'); });
+  }, 60);
+
+  // FAQ accordion
   document.querySelectorAll('.faq-trigger').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var isOpen=btn.getAttribute('aria-expanded')==='true';
-      document.querySelectorAll('.faq-trigger').forEach(function(b){b.setAttribute('aria-expanded','false');b.querySelector('.faq-icon').classList.remove('open');});
-      document.querySelectorAll('.faq-answer').forEach(function(a){a.style.maxHeight='';});
-      if(!isOpen){
-        var ans=btn.closest('.faq-item').querySelector('.faq-answer');
+    btn.addEventListener('click', function(){
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-trigger').forEach(function(b){ b.setAttribute('aria-expanded','false'); b.querySelector('.faq-icon').classList.remove('open'); });
+      document.querySelectorAll('.faq-answer').forEach(function(a){ a.style.maxHeight = ''; });
+      if (!isOpen){
+        var ans = btn.closest('.faq-item').querySelector('.faq-answer');
         btn.setAttribute('aria-expanded','true');
         btn.querySelector('.faq-icon').classList.add('open');
-        ans.style.maxHeight=ans.scrollHeight+'px';
+        ans.style.maxHeight = ans.scrollHeight + 'px';
       }
     });
   });
+
+  // Formulário — feedback visual (sem backend)
+  var form = document.getElementById('form-contato');
+  if (form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('.btn-form');
+      btn.textContent = 'Interesse registrado! Entraremos em contato.';
+      btn.disabled = true;
+      btn.style.background = '#0D1117';
+      btn.style.opacity = '0.7';
+    });
+  }
+
+  // Eventos de conversão WhatsApp
+  document.querySelectorAll('[data-conversion="whatsapp"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      // GA4
+      if (typeof gtag === 'function'){
+        gtag('event', 'whatsapp_click', {
+          event_category: 'conversion',
+          event_label: el.textContent.trim() || 'whatsapp_cta'
+        });
+      }
+      // Meta Pixel
+      if (typeof fbq === 'function'){
+        fbq('track', 'Lead');
+      }
+    });
+  });
+
 })();
 </script>
 </body>
