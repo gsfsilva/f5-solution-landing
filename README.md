@@ -6,26 +6,27 @@
 
 ## Stack
 
-- **HTML + Tailwind CSS** (CDN, zero build step)
-- **Hospedagem:** Vercel
+- **HTML + CSS modular** (custom properties) + **Tailwind CDN** (Sprint 3) → **CSS puro** (Sprint 4)
+- **Hospedagem:** Vercel *(Sprint 5)*
 - **Analytics:** Google Analytics 4 + Meta Pixel *(Sprint 5)*
 - **Integração:** WhatsApp Business
 
 ## Fontes
 
-- Títulos: Inter (letter-spacing -0.02em, substituta do Geist)
+- Display/Headings: Inter com `letter-spacing: -0.035em` (equivalente visual ao Geist)
 - Corpo: Inter — [Google Fonts](https://fonts.google.com/specimen/Inter)
+- Geist real será carregado via Vercel CDN no deploy
 
 ## Paleta
 
-| Token | Hex |
-|---|---|
-| Primária | `#0D1117` |
-| Fundo | `#F8F9FA` |
-| Acento | `#00C853` |
-| Texto | `#2B2B2B` |
-| Borda | `#E5E7EB` |
-| Texto secundário | `#6B7280` |
+| Token | Hex | CSS var |
+|---|---|---|
+| Primária | `#0D1117` | `--ink` |
+| Fundo | `#F8F9FA` | `--canvas` |
+| Acento | `#00C853` | `--go` |
+| Texto | `#2B2B2B` | `--body` |
+| Borda | `#E5E7EB` | `--rim` |
+| Texto secundário | `#6B7280` | `--sub` |
 
 ---
 
@@ -34,15 +35,17 @@
 ```
 f5-solution-landing/
 ├── docs/
-│   ├── sprint-1-analise.md         ✅ Crítica estratégica do briefing
-│   └── sprint-2-prompt-mestre.md   ✅ Prompt Mestre completo
+│   ├── sprint-1-analise.md          ✅ Crítica estratégica
+│   ├── sprint-2-prompt-mestre.md    ✅ Prompt Mestre
+│   └── sprint-4-refinamento.md      ✅ Documentação de refinamento
 ├── src/
-│   └── index.html                  ✅ Sprint 3 — primeira versão funcional
+│   └── index.html                   ✅ Sprint 4 — versão refinada (1.125 linhas)
 ├── assets/
 ├── reports/
-│   ├── sprint-1-report.md          ✅
-│   ├── sprint-2-report.md          ✅
-│   └── sprint-3-report.md          ✅
+│   ├── sprint-1-report.md           ✅
+│   ├── sprint-2-report.md           ✅
+│   ├── sprint-3-report.md           ✅
+│   └── sprint-4-report.md           ✅
 └── README.md
 ```
 
@@ -55,8 +58,8 @@ f5-solution-landing/
 | Sprint 1 | ✅ Concluída | Crítica estratégica do briefing |
 | Sprint 2 | ✅ Concluída | Prompt Mestre |
 | Sprint 3 | ✅ Concluída | HTML + Tailwind — primeira versão funcional |
-| Sprint 4 | 🔜 Pendente | Revisão, refinamento e substituição de placeholders |
-| Sprint 5 | 🔜 Pendente | GA4, Meta Pixel e deploy em Vercel |
+| Sprint 4 | ✅ Concluída | Refinamento visual, UX e acessibilidade |
+| Sprint 5 | 🔜 Pendente | Integrações, placeholders reais e deploy Vercel |
 
 ---
 
@@ -72,12 +75,12 @@ Ou com VS Code + extensão **Live Server** → botão "Go Live".
 
 ---
 
-## Placeholders a substituir antes do deploy
+## Placeholders a substituir antes do deploy (Sprint 5)
 
-- [ ] Número WhatsApp: `5500000000000` → número real
-- [ ] E-mail: `contato@f5solution.com.br` → e-mail real
-- [ ] Logo textual → SVG real da marca
-- [ ] Dados do dashboard (simulados) → dados reais
+- [ ] `5500000000000` → número real do WhatsApp Business
+- [ ] `contato@f5solution.com.br` → e-mail real
+- [ ] Logo textual → arquivo SVG real da marca
+- [ ] Dados do dashboard (simulados) → dados reais quando disponíveis
 
 ---
 
