@@ -6,10 +6,10 @@
 
 ## Stack
 
-- **HTML + CSS modular** (custom properties)
-- **Hospedagem:** Vercel *(Sprint 6)*
-- **Analytics:** Google Analytics 4 + Meta Pixel *(Sprint 6)*
-- **Integração:** WhatsApp Business
+- **HTML único + CSS modular** (custom properties)
+- **Hospedagem:** Vercel *(Sprint 7 — go-live)*
+- **Analytics:** Google Analytics 4 + Meta Pixel *(placeholders prontos)*
+- **Integração:** WhatsApp Business *(placeholder pronto)*
 
 ## Fontes
 
@@ -34,19 +34,22 @@
 ```
 f5-solution-landing/
 ├── docs/
-│   ├── sprint-1-analise.md          ✅ Crítica estratégica
-│   ├── sprint-2-prompt-mestre.md    ✅ Prompt Mestre
-│   ├── sprint-4-refinamento.md      ✅ Refinamento visual
-│   └── sprint-5-cro.md              ✅ Otimização de conversão
+│   ├── sprint-1-analise.md          ✅
+│   ├── sprint-2-prompt-mestre.md    ✅
+│   ├── sprint-4-refinamento.md      ✅
+│   ├── sprint-5-cro.md              ✅
+│   └── sprint-6-deploy-prep.md      ✅
 ├── src/
-│   └── index.html                   ✅ Sprint 5 — versão otimizada (763 linhas)
+│   └── index.html                   ✅ Sprint 6 — produção-ready (866 linhas)
 ├── assets/
+│   └── og-image.jpg                 🔜 Criar antes do deploy (1200×630px)
 ├── reports/
 │   ├── sprint-1-report.md           ✅
 │   ├── sprint-2-report.md           ✅
 │   ├── sprint-3-report.md           ✅
 │   ├── sprint-4-report.md           ✅
-│   └── sprint-5-report.md           ✅
+│   ├── sprint-5-report.md           ✅
+│   └── sprint-6-report.md           ✅
 └── README.md
 ```
 
@@ -61,7 +64,22 @@ f5-solution-landing/
 | Sprint 3 | ✅ Concluída | HTML + CSS — primeira versão funcional |
 | Sprint 4 | ✅ Concluída | Refinamento visual, UX e acessibilidade |
 | Sprint 5 | ✅ Concluída | Otimização de conversão (CRO) |
-| Sprint 6 | 🔜 Pendente | Deploy, integrações e placeholders reais |
+| Sprint 6 | ✅ Concluída | Preparação técnica para deploy |
+| Sprint 7 | 🔜 Pendente | Go-live: substituir placeholders e publicar |
+
+---
+
+## ⚠️ Checklist de Deploy (Sprint 7)
+
+Antes de publicar, substituir obrigatoriamente:
+
+- [ ] `WA_LINK` no JS → número real do WhatsApp Business (`55 + DDD + número`)
+- [ ] `G-XXXXXXXXXX` → ID real da propriedade GA4
+- [ ] `META_PIXEL_ID` → ID real do Pixel Meta
+- [ ] `og-image.jpg` → criar imagem 1200×630px e hospedar
+- [ ] `contato@f5solution.com.br` → e-mail real
+- [ ] Logo textual → SVG real da marca
+- [ ] Formulário `action=""` → endpoint real (Formspree, Make, N8N)
 
 ---
 
@@ -75,12 +93,16 @@ open src/index.html
 
 ---
 
-## Placeholders a substituir antes do deploy (Sprint 6)
+## Deploy no Vercel
 
-- [ ] `5500000000000` → número real do WhatsApp Business
-- [ ] `contato@f5solution.com.br` → e-mail real
-- [ ] Logo textual → arquivo SVG real da marca
-- [ ] IDs do GA4 e Meta Pixel
+```
+1. vercel.com → New Project → Import: gsfsilva/f5-solution-landing
+2. Output directory: src
+3. Framework Preset: Other
+4. Deploy
+5. Settings → Domains → adicionar f5solution.com.br
+6. Apontar DNS conforme instrução do Vercel
+```
 
 ---
 
