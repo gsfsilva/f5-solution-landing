@@ -4,106 +4,77 @@
 
 ---
 
+## 🚀 Status do Projeto
+
+**PRONTO PARA DEPLOY** — aguardando substituição dos placeholders abaixo.
+
+---
+
+## ⚠️ Substituir Antes de Publicar
+
+| # | Localização | Substituir por |
+|---|---|---|
+| 1 | Var `WA_LINK` no JS | Número real do WhatsApp Business (`55DDD+número`) |
+| 2 | `G-XXXXXXXXXX` no `<head>` | ID real da propriedade GA4 |
+| 3 | `META_PIXEL_ID` no `<head>` | ID real do Pixel Meta |
+| 4 | `/og-image.jpg` | Imagem 1200×630px criada |
+| 5 | `contato@f5solution.com.br` | E-mail comercial real |
+| 6 | `action=""` no formulário | Endpoint real (Formspree, Make, N8N) |
+
+---
+
 ## Stack
 
-- **HTML único + CSS modular** (custom properties)
-- **Hospedagem:** Vercel *(Sprint 7 — go-live)*
-- **Analytics:** Google Analytics 4 + Meta Pixel *(placeholders prontos)*
-- **Integração:** WhatsApp Business *(placeholder pronto)*
-
-## Fontes
-
-- Display/Headings: Inter com `letter-spacing: -0.036em`
-- Corpo: Inter — [Google Fonts](https://fonts.google.com/specimen/Inter)
-
-## Paleta
-
-| Token | Hex | CSS var |
-|---|---|---|
-| Primária | `#0D1117` | `--ink` |
-| Fundo | `#F8F9FA` | `--canvas` |
-| Acento | `#00C853` | `--go` |
-| Texto | `#2B2B2B` | `--body` |
-| Borda | `#E5E7EB` | `--rim` |
-| Texto secundário | `#6B7280` | `--sub` |
-
----
-
-## Estrutura do Projeto
-
-```
-f5-solution-landing/
-├── docs/
-│   ├── sprint-1-analise.md          ✅
-│   ├── sprint-2-prompt-mestre.md    ✅
-│   ├── sprint-4-refinamento.md      ✅
-│   ├── sprint-5-cro.md              ✅
-│   └── sprint-6-deploy-prep.md      ✅
-├── src/
-│   └── index.html                   ✅ Sprint 6 — produção-ready (866 linhas)
-├── assets/
-│   └── og-image.jpg                 🔜 Criar antes do deploy (1200×630px)
-├── reports/
-│   ├── sprint-1-report.md           ✅
-│   ├── sprint-2-report.md           ✅
-│   ├── sprint-3-report.md           ✅
-│   ├── sprint-4-report.md           ✅
-│   ├── sprint-5-report.md           ✅
-│   └── sprint-6-report.md           ✅
-└── README.md
-```
-
----
+- **HTML único + CSS modular** (custom properties, sem framework)
+- **Hospedagem:** Vercel
+- **Domínio:** f5solution.com.br
 
 ## Sprints
 
-| Sprint | Status | Descrição |
+| Sprint | Status | Entregável |
 |---|---|---|
-| Sprint 1 | ✅ Concluída | Crítica estratégica do briefing |
-| Sprint 2 | ✅ Concluída | Prompt Mestre |
-| Sprint 3 | ✅ Concluída | HTML + CSS — primeira versão funcional |
-| Sprint 4 | ✅ Concluída | Refinamento visual, UX e acessibilidade |
-| Sprint 5 | ✅ Concluída | Otimização de conversão (CRO) |
-| Sprint 6 | ✅ Concluída | Preparação técnica para deploy |
-| Sprint 7 | 🔜 Pendente | Go-live: substituir placeholders e publicar |
+| 1 | ✅ | Crítica estratégica |
+| 2 | ✅ | Prompt Mestre |
+| 3 | ✅ | HTML v1 funcional |
+| 4 | ✅ | Refinamento visual e UX |
+| 5 | ✅ | Otimização de conversão (CRO) |
+| 6 | ✅ | Preparação técnica (SEO, OG, GA4, Pixel, form) |
+| 7 | ✅ | Plano de publicação e validação |
 
 ---
 
-## ⚠️ Checklist de Deploy (Sprint 7)
+## Deploy na Vercel
 
-Antes de publicar, substituir obrigatoriamente:
+```
+1. vercel.com → New Project → Import: gsfsilva/f5-solution-landing
+2. Output Directory: src
+3. Framework Preset: Other
+4. Build Command: (vazio)
+5. Deploy → testar URL temporária
+6. Settings → Domains → adicionar f5solution.com.br
+7. Configurar DNS conforme Vercel → aguardar propagação
+```
 
-- [ ] `WA_LINK` no JS → número real do WhatsApp Business (`55 + DDD + número`)
-- [ ] `G-XXXXXXXXXX` → ID real da propriedade GA4
-- [ ] `META_PIXEL_ID` → ID real do Pixel Meta
-- [ ] `og-image.jpg` → criar imagem 1200×630px e hospedar
-- [ ] `contato@f5solution.com.br` → e-mail real
-- [ ] Logo textual → SVG real da marca
-- [ ] Formulário `action=""` → endpoint real (Formspree, Make, N8N)
-
----
-
-## Como rodar localmente
+## Rodar Localmente
 
 ```bash
 git clone https://github.com/gsfsilva/f5-solution-landing.git
-cd f5-solution-landing
 open src/index.html
 ```
 
 ---
 
-## Deploy no Vercel
+## Paleta
 
-```
-1. vercel.com → New Project → Import: gsfsilva/f5-solution-landing
-2. Output directory: src
-3. Framework Preset: Other
-4. Deploy
-5. Settings → Domains → adicionar f5solution.com.br
-6. Apontar DNS conforme instrução do Vercel
-```
+| Token | Hex |
+|---|---|
+| Primária | `#0D1117` |
+| Fundo | `#F8F9FA` |
+| Acento | `#00C853` |
+| Texto | `#2B2B2B` |
+| Borda | `#E5E7EB` |
+| Texto sec. | `#6B7280` |
 
 ---
 
-*Projeto iniciado em maio de 2026.*
+*Projeto desenvolvido em 7 sprints — maio de 2026.*
