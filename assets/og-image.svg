@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="F5 Solution suporte tecnico terceirizado">
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#FFFFFF" stroke="#e2e8f0"/>
+  <rect x="820" y="132" width="236" height="236" rx="22" fill="#0f2f3a"/>
+  <path d="M870 178h118v37h-76v33h62v37h-62v52h-42V178Z" fill="#FFFFFF"/>
+  <path d="M994 268c0 41-31 70-73 70-22 0-41-7-54-19l23-31c9 8 19 13 31 13 16 0 27-10 27-24 0-14-10-23-26-23-9 0-17 2-24 6l-22-15 7-64h101v37h-67l-2 16c5-1 11-2 17-2 38 0 62 23 62 56Z" fill="#00ffaa"/>
+  <text x="132" y="192" fill="#0f2f3a" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">F5 Solution</text>
+  <text x="132" y="292" fill="#0f2f3a" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800">Suporte tecnico</text>
+  <text x="132" y="368" fill="#0f2f3a" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800">terceirizado</text>
+  <text x="132" y="436" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">SLA, equipe especializada e operacao de suporte para revendas.</text>
+  <rect x="132" y="480" width="260" height="52" rx="12" fill="#00ffaa"/>
+  <text x="162" y="514" fill="#0f2f3a" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800">30 dias sem custo</text>
+</svg>
+
