@@ -1,80 +1,75 @@
-# F5 Solution — Landing Page
+# F5 Solution - Landing Page
 
-> Landing page de alta conversão para a **F5 Solution**, empresa especializada em terceirização de suporte técnico para revendas de automação comercial e empresas de ERP.
-
----
-
-## 🚀 Status do Projeto
-
-**PRONTO PARA DEPLOY** — aguardando substituição dos placeholders abaixo.
-
----
-
-## ⚠️ Substituir Antes de Publicar
-
-| # | Localização | Substituir por |
-|---|---|---|
-| 1 | Var `WA_LINK` no JS | Número real do WhatsApp Business (`55DDD+número`) |
-| 2 | `G-XXXXXXXXXX` no `<head>` | ID real da propriedade GA4 |
-| 3 | `META_PIXEL_ID` no `<head>` | ID real do Pixel Meta |
-| 4 | `/og-image.jpg` | Imagem 1200×630px criada |
-| 5 | `contato@f5solution.com.br` | E-mail comercial real |
-| 6 | `action=""` no formulário | Endpoint real (Formspree, Make, N8N) |
-
----
+Landing page estatica da F5 Solution para terceirizacao de suporte tecnico para revendas de automacao comercial e empresas de ERP.
 
 ## Stack
 
-- **HTML único + CSS modular** (custom properties, sem framework)
-- **Hospedagem:** Vercel
-- **Domínio:** f5solution.com.br
+- HTML, CSS e JavaScript estaticos
+- Hospedagem recomendada: Vercel
+- SEO: canonical, Open Graph, Twitter Card, JSON-LD, sitemap e robots
+- Integracao comercial: WhatsApp Business
+- Consentimento LGPD: banner, modal e gerenciador de cookies
 
-## Sprints
+## Estrutura
 
-| Sprint | Status | Entregável |
-|---|---|---|
-| 1 | ✅ | Crítica estratégica |
-| 2 | ✅ | Prompt Mestre |
-| 3 | ✅ | HTML v1 funcional |
-| 4 | ✅ | Refinamento visual e UX |
-| 5 | ✅ | Otimização de conversão (CRO) |
-| 6 | ✅ | Preparação técnica (SEO, OG, GA4, Pixel, form) |
-| 7 | ✅ | Plano de publicação e validação |
+```text
+f5-solution-landing/
+├── index.html
+├── diretrizes-e-politicas/
+│   ├── termos-de-uso/
+│   │   └── index.html
+│   └── aviso-de-privacidade/
+│       └── index.html
+├── robots.txt
+├── sitemap.xml
+├── vercel.json
+├── assets/
+│   ├── favicon.svg
+│   └── og-image.svg
+├── .gitignore
+└── README.md
+```
 
----
+## Como rodar localmente
+
+```bash
+python -m http.server 4173
+```
+
+Depois acesse `http://127.0.0.1:4173/`.
 
 ## Deploy na Vercel
 
-```
-1. vercel.com → New Project → Import: gsfsilva/f5-solution-landing
-2. Output Directory: src
-3. Framework Preset: Other
-4. Build Command: (vazio)
-5. Deploy → testar URL temporária
-6. Settings → Domains → adicionar f5solution.com.br
-7. Configurar DNS conforme Vercel → aguardar propagação
-```
+- Framework preset: Other
+- Build command: vazio
+- Output directory: vazio / raiz do projeto
+- Arquivo servido: `index.html`
 
-## Rodar Localmente
+O `vercel.json` inclui headers basicos de seguranca e cache longo para `assets/`.
 
-```bash
-git clone https://github.com/gsfsilva/f5-solution-landing.git
-open src/index.html
-```
+## Configuracao atual
 
----
+- WhatsApp: `5511978746982` / `(11) 97874-6982`
+- E-mail: `contato.f5solution@gmail.com`
+- Responsavel: `Wesley Francisco da Silva`
+- CNPJ: `59.123.207/0001-04`
+- Endereco: `R. Aldo Gianini, 734 - Vila Nova Curuca, Sao Paulo - SP, 08032-326`
+- Dominio configurado nos metadados: `https://f5solution.com.br/`
 
-## Paleta
+## Cookies e consentimento
 
-| Token | Hex |
-|---|---|
-| Primária | `#0D1117` |
-| Fundo | `#F8F9FA` |
-| Acento | `#00C853` |
-| Texto | `#2B2B2B` |
-| Borda | `#E5E7EB` |
-| Texto sec. | `#6B7280` |
+- Arquivos: `assets/cookie-consent.css` e `assets/cookie-consent.js`
+- Chave localStorage: `f5_cookie_consent`
+- Versao atual: `COOKIE_CONSENT_VERSION = "2026-05-25"`
+- GA4: preencher `GA_MEASUREMENT_ID` em `assets/cookie-consent.js`
+- Meta Pixel: preencher `META_PIXEL_ID` em `assets/cookie-consent.js`
+- Link do rodape: `Gerenciador de cookies`
+- Scripts opcionais so carregam apos consentimento da categoria correspondente.
 
----
+## Pendencias antes de operar
 
-*Projeto desenvolvido em 7 sprints — maio de 2026.*
+- Confirmar se o e-mail `contato.f5solution@gmail.com` recebe mensagens.
+- Confirmar DNS e deploy em producao.
+- Substituir favicon/OG por logo oficial, caso exista uma marca aprovada.
+- Inserir GA4/Meta Pixel somente com IDs reais, mantendo o bloqueio previo por consentimento.
+- Trocar dados simulados do painel por metricas reais, se a F5 preferir.
